@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Aditya Widodo Pratama</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0f172a', card: '#1e293b', primary: '#3b82f6', accent: '#0ea5e9' } } } } }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; }
+        .gradient-text { background: linear-gradient(to right, #38bdf8, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .timeline-dot { position: absolute; left: -29px; top: 0; width: 20px; height: 20px; border-radius: 50%; background: #0f172a; border: 4px solid #3b82f6; box-shadow: 0 0 10px rgba(59,130,246,0.8); }
+        @media (min-width: 768px) { .md-timeline-dot-left { right: -11px; left: auto; } .md-timeline-dot-right { left: -11px; } }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+        
+        /* WIDZZONE Premium Scanline Loader */
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-scanline {
+            animation: scanline 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        /* Swiper Fix */
+        .swiper-button-next, .swiper-button-prev { color: #3b82f6 !important; background: rgba(15, 23, 42, 0.8); padding: 30px; border-radius: 50%; border: 1px solid #1e293b; transform: scale(0.7); }
+        .swiper-pagination-bullet { background: #64748b !important; opacity: 0.5; }
+        .swiper-pagination-bullet-active { background: #3b82f6 !important; opacity: 1; transform: scale(1.3); }
+        .swiper-slide { height: auto !important; }
+
+        /* Pembasmi Banner Translate */
+        #google_translate_element { display: none !important; }
+        iframe.goog-te-banner-frame.skiptranslate { display: none !important; visibility: hidden !important; }
+        body { top: 0px !important; position: static !important; margin-top: 0px !important; }
+        .skiptranslate iframe { display: none !important; }
+        #goog-gt-tt { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+    
+        /* GLightbox Premium Dark Styling */
+        .glightbox-clean .gclose, .glightbox-clean .gnext, .glightbox-clean .gprev { background-color: rgba(30, 41, 59, 0.8) !important; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 50%; }
+        .glightbox-clean .gclose path, .glightbox-clean .gnext path, .glightbox-clean .gprev path { fill: #3b82f6 !important; }
+        .glightbox-clean .gclose:hover, .glightbox-clean .gnext:hover, .glightbox-clean .gprev:hover { background-color: #3b82f6 !important; }
+        .glightbox-clean .gclose:hover path, .glightbox-clean .gnext:hover path, .glightbox-clean .gprev:hover path { fill: white !important; }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-300 antialiased selection:bg-brand-primary selection:text-white relative">
+
+    <div id="loading-screen" class="fixed inset-0 z-[100] bg-brand-dark flex flex-col items-center justify-center transition-opacity duration-1000 ease-in-out">
+        <div class="text-5xl md:text-6xl font-extrabold text-white tracking-tighter mb-8 animate-pulse">
+            AWP<span class="text-brand-primary drop-shadow-[0_0_20px_rgba(59,130,246,1)]">.</span>
+        </div>
+        <div class="w-48 md:w-64 h-[2px] bg-slate-800 rounded-full overflow-hidden mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <div class="h-full bg-brand-primary w-full origin-left animate-scanline shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
+        </div>
+        <p class="text-slate-400 font-semibold tracking-[0.25em] text-[10px] md:text-xs uppercase animate-pulse">
+            Selamat Datang. Menyiapkan Ruang Kerja Eksklusif AWP...
+        </p>
+    </div>
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white tracking-tighter">AWP<span class="text-brand-primary">.</span></a>
+            
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex space-x-8 text-sm font-semibold">
+                    <a href="#home" class="hover:text-brand-primary transition-colors">Home</a>
+                    <a href="#experience" class="hover:text-brand-primary transition-colors">Experience</a>
+                    <a href="#trainer" class="hover:text-brand-primary transition-colors">Trainer</a>
+                    <a href="#projects" class="hover:text-brand-primary transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-brand-primary transition-colors">Contact</a>
+                </div>
+
+                <div class="flex items-center bg-slate-800/80 rounded-full border border-slate-700 p-1 backdrop-blur-sm">
+                    <button onclick="changeLanguage('id')" id="btn-lang-id" class="px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md">ID</button>
+                    <button onclick="changeLanguage('en')" id="btn-lang-en" class="px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white">EN</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="google_translate_element"></div>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-24 pb-10 px-6 relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-primary rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-brand-accent rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
+        
+        <div class="max-w-5xl mx-auto text-center z-10 flex flex-col items-center">
+            <div id="ui-avatar-container" class="relative mb-5 opacity-0 translate-y-4 animate-fade-in" style="animation: fadeIn 1s ease 0.5s forwards;">
+                <div class="absolute inset-0 bg-brand-primary rounded-full blur-2xl opacity-40 scale-110"></div>
+                <img id="ui-avatar" src="" alt="Aditya" class="relative w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-brand-primary shadow-2xl transition-transform duration-300 hover:scale-105 hover:rotate-3 hidden" style="object-position: 50% 10%;">
+                <div id="ui-avatar-placeholder" class="relative w-28 h-28 md:w-32 md:h-32 rounded-full bg-slate-800 border-4 border-slate-700 flex items-center justify-center text-slate-600 text-5xl"><i class="fas fa-user-tie"></i></div>
+            </div>
+            <p class="text-brand-accent text-sm md:text-base font-semibold tracking-wide uppercase mb-2" id="ui-role"></p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">Halo, Saya <br/><span class="gradient-text" id="ui-name"></span></h1>
+            <p class="text-base md:text-lg text-slate-400 mb-8 max-w-4xl mx-auto leading-relaxed" id="ui-about"></p>
+            
+            <div class="flex flex-wrap justify-center gap-4 w-full px-4">
+                <a href="#projects" class="px-6 py-3 rounded-full bg-brand-primary text-white font-semibold hover:bg-blue-600 transition-all shadow-[0_0_15px_rgba(59,130,246,0.5)]">Portfolio</a>
+                <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya%2C%20saya%20melihat%20portofolio%20Anda%20yang%20luar%20biasa.%20Saya%20tertarik%20untuk%20mendiskusikan%20potensi%20kolaborasi%20terkait%20optimasi%20sistem%2Fotomatisasi%20di%20perusahaan%20kami.%20Kapan%20Anda%20memiliki%20waktu%20luang%20untuk%20berdiskusi%20ringan%3F" target="_blank" class="px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold hover:bg-[#1ebe57] transition-all shadow-[0_0_15px_rgba(37,211,102,0.4)] flex items-center group"><i class="fab fa-whatsapp text-xl mr-2 group-hover:scale-125 transition-transform duration-300"></i>WhatsApp</a>
+                <a href="#contact" class="px-6 py-3 rounded-full border border-slate-600 text-white font-semibold hover:border-brand-primary hover:text-brand-primary transition-all">Email Form</a>
+                <a id="ui-cv-btn" href="#" target="_blank" class="px-6 py-3 rounded-full bg-slate-800 border border-brand-accent text-brand-accent font-semibold hover:bg-brand-accent hover:text-white transition-all hidden group"><i class="fas fa-download mr-2 group-hover:-translate-y-1 transition-transform"></i>CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-slate-900 px-6 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Tech <span class="text-brand-primary">Stack</span> & Keahlian</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" id="ui-skills-container"></div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 px-6 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Jejak <span class="text-brand-primary">Karier</span></h2>
+            <div class="relative border-l-2 border-slate-700 ml-4 md:ml-0 md:border-l-0" id="ui-experience-container"></div>
+        </div>
+    </section>
+
+    <section id="trainer" class="py-20 bg-slate-900/50 px-6 border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto relative px-4 md:px-12">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Sesi <span class="text-brand-primary">Pelatihan</span></h2>
+            <p class="text-slate-400 text-sm md:text-base mb-12 text-center max-w-2xl mx-auto leading-relaxed">Galeri dokumentasi profesional kegiatan saya sebagai Pelatih (Trainer), Fasilitator, dan Narasumber untuk pengembangan keterampilan teknologi dan bisnis.</p>
+            
+            <div class="swiper myTrainerSwiper pb-16">
+                <div class="swiper-wrapper" id="ui-trainer-container">
+                    </div>
+                <div class="swiper-pagination trainer-pagination mb-2"></div>
+            </div>
+            
+            <div class="swiper-button-next trainer-next hidden md:flex"></div>
+            <div class="swiper-button-prev trainer-prev hidden md:flex"></div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-slate-900 px-6 border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto relative px-4 md:px-12">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Proyek <span class="text-brand-primary">Unggulan</span></h2>
+            <div class="swiper mySwiper pb-16">
+                <div class="swiper-wrapper" id="ui-projects-container"></div>
+                <div class="swiper-pagination mb-2"></div>
+            </div>
+            <div class="swiper-button-next hidden md:flex"></div>
+            <div class="swiper-button-prev hidden md:flex"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Mari Bangun Sesuatu yang <span class="text-brand-primary">Luar Biasa.</span></h2>
+                <p class="text-slate-400 text-lg mb-8">Apakah Anda memiliki proyek baru, peluang karir, atau sekadar ingin berkolaborasi? Tinggalkan pesan, saya akan segera merespons.</p>
+                <div class="flex items-center justify-center md:justify-start gap-4 text-slate-300">
+                    <i class="fas fa-envelope text-brand-primary text-2xl"></i><span id="ui-email-text" class="font-semibold"></span>
+                </div>
+            </div>
+            <div class="md:w-1/2 w-full max-w-lg">
+                <div class="bg-brand-card p-8 rounded-3xl border border-slate-700 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                    <form id="contact-form" onsubmit="submitForm(event)" class="space-y-6">
+                        <div>
+                            <label class="block text-slate-400 mb-2 text-sm font-semibold">Nama Lengkap</label>
+                            <input type="text" id="form-name" required class="w-full bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-2 text-sm font-semibold">Email Aktif</label>
+                            <input type="email" id="form-email" required class="w-full bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-2 text-sm font-semibold">Pesan / Kolaborasi</label>
+                            <textarea id="form-message" required rows="4" class="w-full bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="w-full bg-brand-primary text-white font-bold py-4 rounded-xl hover:bg-blue-600 transition-all shadow-[0_0_15px_rgba(59,130,246,0.4)]">Kirim Pesan <i class="fas fa-paper-plane ml-2"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="fixed bottom-6 right-6 z-[90] flex flex-col items-end animate-fade-in" style="animation: fadeIn 1s ease 1s forwards; opacity: 0;">
+        <div class="mb-2 bg-brand-card text-sm text-slate-300 px-4 py-2 rounded-xl border border-slate-700 shadow-lg opacity-0 transition-opacity duration-300 translate-x-4 pointer-events-none" id="wa-tooltip">Mari berdiskusi! <span class="text-brand-primary font-bold">🚀</span></div>
+        <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya%2C%20saya%20melihat%20portofolio%20Anda%20yang%20luar%20biasa.%20Saya%20tertarik%20untuk%20mendiskusikan%20potensi%20kolaborasi%20terkait%20optimasi%20sistem%2Fotomatisasi%20di%20perusahaan%20kami.%20Kapan%20Anda%20memiliki%20waktu%20luang%20untuk%20berdiskusi%20ringan%3F" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group" onmouseenter="document.getElementById('wa-tooltip').style.opacity='1'; document.getElementById('wa-tooltip').style.transform='translateX(0)';" onmouseleave="document.getElementById('wa-tooltip').style.opacity='0'; document.getElementById('wa-tooltip').style.transform='translateX(16px)';"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
+    </div>
+
+    <div id="custom-alert" class="fixed inset-0 z-[120] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="custom-alert-box" class="bg-brand-card border border-brand-primary p-8 rounded-3xl shadow-[0_0_40px_rgba(59,130,246,0.3)] max-w-sm w-full mx-4 text-center transform scale-90 transition-transform duration-300">
+            <div class="w-20 h-20 bg-brand-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-4xl shadow-inner"><i class="fas fa-check-circle animate-pulse"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-2">Luar Biasa!</h3>
+            <p id="custom-alert-message" class="text-slate-400 mb-8 text-sm leading-relaxed">Pesan Anda berhasil dikirim.</p>
+            <button onclick="closeCustomAlert()" class="w-full py-4 bg-brand-primary text-white font-bold rounded-xl hover:bg-blue-600 transition-all shadow-[0_0_15px_rgba(59,130,246,0.4)] tracking-wide">TUTUP</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    
+    <script>
+        // ==========================================
+        // WIDZZONE ENGINE: TRANSLATE & SAFE RELOAD V8
+        // ==========================================
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'id', 
+                includedLanguages: 'en', // Target hanya EN
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function changeLanguage(langCode) {
+            const btnId = document.getElementById('btn-lang-id');
+            const btnEn = document.getElementById('btn-lang-en');
+
+            if (langCode === 'id' && btnId.classList.contains('bg-brand-primary')) return;
+            if (langCode === 'en' && btnEn.classList.contains('bg-brand-primary')) return;
+
+            if(langCode === 'id') {
+                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
+                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
+                
+                // Munculkan WIDZZONE Premium Splash Screen
+                const loader = document.getElementById('loading-screen');
+                loader.style.display = 'flex';
+                setTimeout(() => { loader.style.opacity = '1'; }, 10);
+
+                // Hapus Jejak Translate
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
+                
+                // Reload Aman dari Bingkai Utama
+                google.script.run.withSuccessHandler(function(url) {
+                    window.top.location.href = url; 
+                }).getWebAppUrl();
+
+            } else {
+                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
+                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
+                
+                var selectField = document.querySelector(".goog-te-combo");
+                if(selectField) {
+                    selectField.value = 'en';
+                    selectField.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            }
+        }
+
+        // ==========================================
+        // WIDZZONE ENGINE: RENDER DATA & SWIPER V8
+        // ==========================================
+        function renderPortfolio(data) {
+            // 1. Render Profile
+            if (data.profile.avatar) {
+                const img = document.getElementById('ui-avatar');
+                img.src = data.profile.avatar;
+                img.onload = () => { img.style.display = 'block'; document.getElementById('ui-avatar-placeholder').style.display = 'none'; };
+                img.onerror = () => { img.style.display = 'none'; document.getElementById('ui-avatar-placeholder').style.display = 'flex'; };
+            }
+            document.getElementById('ui-name').innerText = data.profile.name || "";
+            document.getElementById('ui-role').innerText = data.profile.role || "";
+            document.getElementById('ui-about').innerText = data.profile.about || "";
+            document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
+            if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
+
+            // 2. Render Skills
+            const skillsContainer = document.getElementById('ui-skills-container');
+            let skillsHTML = '';
+            data.skills.forEach(item => {
+                skillsHTML += `
+                    <div class="mb-4"><div class="flex justify-between mb-1"><span class="text-sm font-medium text-slate-300">${item.skill}</span><span class="text-sm font-medium text-brand-primary">${item.proficiency}%</span></div><div class="w-full bg-slate-700 rounded-full h-2.5"><div class="bg-brand-primary h-2.5 rounded-full transition-all duration-1000 ease-out" style="width: 0%" data-target-width="${item.proficiency}%"></div></div></div>`;
+            });
+            skillsContainer.innerHTML = skillsHTML;
+            setTimeout(() => { document.querySelectorAll('[data-target-width]').forEach(el => el.style.width = el.getAttribute('data-target-width')); }, 300);
+
+            // 3. Render Experience
+            const expContainer = document.getElementById('ui-experience-container');
+            let expHTML = '<div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-slate-700"></div>';
+            if(data.experience.length > 0) {
+                data.experience.forEach((item, index) => {
+                    const isLeft = index % 2 === 0;
+                    const layoutClass = isLeft ? 'md:w-1/2 md:pr-12 md:ml-0' : 'md:w-1/2 md:pl-12 md:ml-auto';
+                    const dotClass = isLeft ? 'md-timeline-dot-left' : 'md-timeline-dot-right';
+                    const alignClass = isLeft ? 'md:text-right text-left' : 'text-left';
+                    const yearText = item.endYear ? `${item.startYear} - ${item.endYear}` : `${item.startYear} - SEKARANG`;
+                    expHTML += `
+                        <div class="mb-12 relative ${layoutClass} pl-8 md:pl-0"><div class="timeline-dot md:absolute md:top-2 ${dotClass}"></div><div class="bg-brand-card p-6 rounded-2xl border border-slate-700 card-hover ${alignClass}"><span class="text-brand-accent text-sm font-bold tracking-wider uppercase">${yearText}</span><h3 class="text-xl font-bold text-white mt-2">${item.role}</h3><p class="text-slate-400 text-sm font-semibold mb-3">${item.company}</p><div class="text-slate-400 text-sm leading-relaxed mt-2">${item.desc}</div></div></div>`;
+                });
+            }
+            expContainer.innerHTML = expHTML;
+
+            // 4. WIDZZONE NEW: Render Trainer Documentation (With Premium Carousel & Lightbox)
+            const trainerContainer = document.getElementById('ui-trainer-container');
+            let trainerHTML = '';
+            
+            if(data.trainer.length === 0) {
+                trainerHTML = '<div class="col-span-1 md:col-span-3 text-center py-10 w-full"><i class="fas fa-images text-5xl text-slate-700 mb-4"></i><p class="text-slate-500">Belum ada dokumentasi pelatihan.</p></div>';
+            } else {
+                data.trainer.forEach(item => {
+                    // WIDZZONE: Dibungkus dengan swiper-slide
+                    trainerHTML += `
+                        <div class="swiper-slide h-auto"> 
+                            <div class="group relative bg-brand-card rounded-2xl border border-slate-700/50 overflow-hidden card-hover h-full flex flex-col">
+                                
+                                <div class="absolute top-4 left-4 z-20 w-8 h-8 rounded-full bg-brand-dark/80 backdrop-blur-sm border border-brand-primary flex items-center justify-center text-brand-primary text-xs shadow-lg">
+                                    <i class="fas fa-user-chalkboard"></i>
+                                </div>
+
+                                <a href="${item.img}" class="glightbox block relative aspect-video overflow-hidden shrink-0" data-glightbox="title: ${item.title} at ${item.location}; description: ${item.date}">
+                                    <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                </a>
+                                
+                                <div class="p-5 flex-grow flex flex-col justify-between">
+                                    <h3 class="text-sm md:text-base font-bold text-white mb-3 leading-tight group-hover:text-brand-primary transition-colors tracking-tight">
+                                        ${item.title}
+                                    </h3>
+                                    <div class="flex flex-col gap-1.5 text-[11px] text-slate-400 mt-auto">
+                                        <span class="flex items-center gap-2"><i class="fas fa-building text-brand-accent w-3"></i>${item.location}</span>
+                                        <span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-brand-accent w-3"></i>${item.date}</span>
+                                    </div>
+                                </div>
+
+                                <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-primary group-hover:w-full transition-all duration-500 shadow-[0_0_10px_rgba(59,130,246,1)]"></div>
+                            </div>
+                        </div>`;
+                });
+            }
+            trainerContainer.innerHTML = trainerHTML;
+
+            // Inisialisasi Engine Swiper Khusus Trainer
+            new Swiper(".myTrainerSwiper", { 
+                slidesPerView: 1, 
+                spaceBetween: 30, 
+                grabCursor: true, 
+                pagination: { el: ".trainer-pagination", clickable: true, dynamicBullets: true }, 
+                navigation: { nextEl: ".trainer-next", prevEl: ".trainer-prev" }, 
+                breakpoints: { 
+                    640: { slidesPerView: 1, spaceBetween: 20 }, 
+                    768: { slidesPerView: 2, spaceBetween: 30 }, 
+                    1024: { slidesPerView: 3, spaceBetween: 30 } 
+                }
+            });
+            
+            // Inisialisasi GLightbox Premium
+            setTimeout(() => {
+                GLightbox({
+                    touchNavigation: true, loop: true, autoplayVideos: true, openEffect: 'zoom', closeEffect: 'fade',
+                    cssEfects: { fade: { in: 'fadeIn', out: 'fadeOut' }, zoom: { in: 'zoomIn', out: 'zoomOut' } }
+                });
+            }, 500);
+
+            // 5. Render Projects
+            const projectsContainer = document.getElementById('ui-projects-container');
+            let projectsHTML = '';
+            data.projects.forEach(item => {
+                let tagsHTML = item.tags.map(tag => `<span class="px-3 py-1 bg-slate-800 text-brand-accent rounded-full text-xs border border-slate-700">${tag}</span>`).join('');
+                projectsHTML += `
+                    <div class="swiper-slide flex">
+                        <a href="${item.link}" target="_blank" class="w-full bg-brand-card rounded-2xl p-8 border border-slate-700 card-hover flex flex-col h-full group relative overflow-hidden text-left">
+                            <div class="absolute top-6 right-6 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:text-brand-primary transition-all duration-300 transform translate-x-2 group-hover:translate-x-0"><i class="fas fa-external-link-alt"></i></div>
+                            <div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary text-2xl mb-6 transition-transform group-hover:scale-110 duration-300"><i class="fas fa-laptop-code"></i></div>
+                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">${item.title}</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">${item.desc}</p>
+                            <div class="flex flex-wrap gap-2 mt-auto relative z-10">${tagsHTML}</div>
+                        </a>
+                    </div>`;
+            });
+            projectsContainer.innerHTML = projectsHTML;
+
+            // Inisialisasi Swiper Proyek
+            new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".swiper-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
+
+            // Fade Out Premium Loading
+            const loader = document.getElementById('loading-screen');
+            loader.style.opacity = '0'; 
+            setTimeout(() => { loader.style.display = 'none'; }, 1000); // 1 detik transisi
+        }
+
+        // ==========================================
+        // WIDZZONE ENGINE: FORM & UTILS V8
+        // ==========================================
+        function submitForm(event) {
+            event.preventDefault(); 
+            const btn = document.getElementById('submit-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Mengirim...';
+            btn.disabled = true; btn.classList.add('opacity-70', 'cursor-not-allowed');
+
+            const formData = { name: document.getElementById('form-name').value, email: document.getElementById('form-email').value, message: document.getElementById('form-message').value };
+
+            google.script.run
+                .withSuccessHandler(res => {
+                    if (res === 'Success') { showCustomAlert("Pesan Anda telah berhasil dikirim. Saya akan segera merespons ke email Anda."); document.getElementById('contact-form').reset(); } 
+                    else { alert("Gagal Terkirim: " + res); }
+                    resetButton();
+                })
+                .withFailureHandler(err => { alert("Koneksi Error: " + err.message); resetButton(); })
+                .processContactForm(formData);
+
+            function resetButton() { btn.innerHTML = originalText; btn.disabled = false; btn.classList.remove('opacity-70', 'cursor-not-allowed'); }
+        }
+
+        function showCustomAlert(msg) { document.getElementById('custom-alert-message').innerText = msg; const overlay = document.getElementById('custom-alert'); const box = document.getElementById('custom-alert-box'); overlay.classList.remove('opacity-0', 'pointer-events-none'); overlay.classList.add('opacity-100'); box.classList.remove('scale-90'); box.classList.add('scale-100'); }
+        function closeCustomAlert() { const overlay = document.getElementById('custom-alert'); const box = document.getElementById('custom-alert-box'); overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0', 'pointer-events-none'); box.classList.remove('scale-100'); box.classList.add('scale-90'); }
+
+        // Pembersih Banner Agresif WIDZZONE
+        setInterval(function() { if (document.body.style.top !== '0px') { document.body.style.top = '0px'; } document.querySelectorAll('.goog-te-banner-frame').forEach(function(b) { b.style.display = 'none'; }); }, 500);
+
+        // Load Data awal
+        document.addEventListener('DOMContentLoaded', () => { google.script.run.withSuccessHandler(renderPortfolio).withFailureHandler(error => { alert("Error DB: " + error.message); document.getElementById('loading-screen').style.display = 'none'; }).getPortfolioData(); });
+    </script>
+</body>
+</html>
