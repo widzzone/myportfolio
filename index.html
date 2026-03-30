@@ -22,15 +22,9 @@
         @media (min-width: 768px) { .md-timeline-dot-left { right: -11px; left: auto; } .md-timeline-dot-right { left: -11px; } }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         
-        /* WIDZZONE Premium Scanline Loader */
-        @keyframes scanline {
-            0% { transform: translateX(-100%); }
-            50% { transform: translateX(0); }
-            100% { transform: translateX(100%); }
-        }
-        .animate-scanline {
-            animation: scanline 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
+        /* Premium Scanline Loader */
+        @keyframes scanline { 0% { transform: translateX(-100%); } 50% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+        .animate-scanline { animation: scanline 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
 
         /* Swiper Fix */
         .swiper-button-next, .swiper-button-prev { color: #3b82f6 !important; background: rgba(15, 23, 42, 0.8); padding: 30px; border-radius: 50%; border: 1px solid #1e293b; transform: scale(0.7); }
@@ -70,7 +64,6 @@
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white tracking-tighter">AWP<span class="text-brand-primary">.</span></a>
-            
             <div class="flex items-center gap-8">
                 <div class="hidden md:flex space-x-8 text-sm font-semibold">
                     <a href="#home" class="hover:text-brand-primary transition-colors">Home</a>
@@ -79,7 +72,6 @@
                     <a href="#projects" class="hover:text-brand-primary transition-colors">Projects</a>
                     <a href="#contact" class="hover:text-brand-primary transition-colors">Contact</a>
                 </div>
-
                 <div class="flex items-center bg-slate-800/80 rounded-full border border-slate-700 p-1 backdrop-blur-sm">
                     <button onclick="changeLanguage('id')" id="btn-lang-id" class="px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md">ID</button>
                     <button onclick="changeLanguage('en')" id="btn-lang-en" class="px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white">EN</button>
@@ -128,15 +120,12 @@
 
     <section id="trainer" class="py-20 bg-slate-900/50 px-6 border-t border-slate-800 relative">
         <div class="max-w-7xl mx-auto relative px-4 md:px-12">
-            <h2 class="text-3xl font-bold text-white mb-6 text-center">Sesi <span class="text-brand-primary">Pelatihan</span></h2>
-            <p class="text-slate-400 text-sm md:text-base mb-12 text-center max-w-2xl mx-auto leading-relaxed">Galeri dokumentasi profesional kegiatan saya sebagai Pelatih (Trainer), Fasilitator, dan Narasumber untuk pengembangan keterampilan teknologi dan bisnis.</p>
-            
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Knowledge <span class="text-brand-primary">Sharing</span></h2>
+            <p class="text-slate-400 text-sm md:text-base mb-12 text-center max-w-2xl mx-auto leading-relaxed">Rekam jejak dedikasi saya dalam membagikan wawasan teknis dan analitis sebagai Trainer maupun Pembicara Utama dalam berbagai seminar dan workshop.</p>
             <div class="swiper myTrainerSwiper pb-16">
-                <div class="swiper-wrapper" id="ui-trainer-container">
-                    </div>
+                <div class="swiper-wrapper" id="ui-trainer-container"></div>
                 <div class="swiper-pagination trainer-pagination mb-2"></div>
             </div>
-            
             <div class="swiper-button-next trainer-next hidden md:flex"></div>
             <div class="swiper-button-prev trainer-prev hidden md:flex"></div>
         </div>
@@ -187,7 +176,7 @@
 
     <div class="fixed bottom-6 right-6 z-[90] flex flex-col items-end animate-fade-in" style="animation: fadeIn 1s ease 1s forwards; opacity: 0;">
         <div class="mb-2 bg-brand-card text-sm text-slate-300 px-4 py-2 rounded-xl border border-slate-700 shadow-lg opacity-0 transition-opacity duration-300 translate-x-4 pointer-events-none" id="wa-tooltip">Mari berdiskusi! <span class="text-brand-primary font-bold">🚀</span></div>
-        <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya%2C%20saya%20melihat%20portofolio%20Anda%20yang%20luar%20biasa.%20Saya%20tertarik%20untuk%20mendiskusikan%20potensi%20kolaborasi%20terkait%20optimasi%20sistem%2Fotomatisasi%20di%20perusahaan%20kami.%20Kapan%20Anda%20memiliki%20waktu%20luang%20untuk%20berdiskusi%20ringan%3F" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group" onmouseenter="document.getElementById('wa-tooltip').style.opacity='1'; document.getElementById('wa-tooltip').style.transform='translateX(0)';" onmouseleave="document.getElementById('wa-tooltip').style.opacity='0'; document.getElementById('wa-tooltip').style.transform='translateX(16px)';"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
+        <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group" onmouseenter="document.getElementById('wa-tooltip').style.opacity='1'; document.getElementById('wa-tooltip').style.transform='translateX(0)';" onmouseleave="document.getElementById('wa-tooltip').style.opacity='0'; document.getElementById('wa-tooltip').style.transform='translateX(16px)';"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
     </div>
 
     <div id="custom-alert" class="fixed inset-0 z-[120] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
@@ -205,20 +194,21 @@
     
     <script>
         // ==========================================
-        // WIDZZONE ENGINE: TRANSLATE & SAFE RELOAD V8
+        // 🚨 WIDZZONE: KONEKSI API KE GOOGLE SHEETS
+        // Ganti URL di bawah dengan URL dari Google Apps Script Anda (yang diakhiri /exec)
+        // ==========================================
+        const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxRfJE8fmyxmruxYNv_ELzRbgQgBt1f6kjnhuxr__GZMnYUVEu15lJHRrLLusbFKoJg/exec"; 
+
+        // ==========================================
+        // TRANSLATE ENGINE (VERCEL SAFE)
         // ==========================================
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'id', 
-                includedLanguages: 'en', // Target hanya EN
-                autoDisplay: false
-            }, 'google_translate_element');
+            new google.translate.TranslateElement({ pageLanguage: 'id', includedLanguages: 'en', autoDisplay: false }, 'google_translate_element');
         }
 
         function changeLanguage(langCode) {
             const btnId = document.getElementById('btn-lang-id');
             const btnEn = document.getElementById('btn-lang-en');
-
             if (langCode === 'id' && btnId.classList.contains('bg-brand-primary')) return;
             if (langCode === 'en' && btnEn.classList.contains('bg-brand-primary')) return;
 
@@ -226,42 +216,31 @@
                 btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
                 btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
                 
-                // Munculkan WIDZZONE Premium Splash Screen
                 const loader = document.getElementById('loading-screen');
-                loader.style.display = 'flex';
-                setTimeout(() => { loader.style.opacity = '1'; }, 10);
-
-                // Hapus Jejak Translate
+                loader.style.display = 'flex'; setTimeout(() => { loader.style.opacity = '1'; }, 10);
+                
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
                 
-                // Reload Aman dari Bingkai Utama
-                google.script.run.withSuccessHandler(function(url) {
-                    window.top.location.href = url; 
-                }).getWebAppUrl();
-
+                // Di Vercel (Independent Hosting), kita aman melakukan reload murni
+                setTimeout(() => { window.location.reload(); }, 500);
             } else {
                 btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
                 btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
                 
                 var selectField = document.querySelector(".goog-te-combo");
-                if(selectField) {
-                    selectField.value = 'en';
-                    selectField.dispatchEvent(new Event('change', { bubbles: true }));
-                }
+                if(selectField) { selectField.value = 'en'; selectField.dispatchEvent(new Event('change', { bubbles: true })); }
             }
         }
 
         // ==========================================
-        // WIDZZONE ENGINE: RENDER DATA & SWIPER V8
+        // RENDER DATA ENGINE
         // ==========================================
         function renderPortfolio(data) {
-            // 1. Render Profile
             if (data.profile.avatar) {
                 const img = document.getElementById('ui-avatar');
                 img.src = data.profile.avatar;
                 img.onload = () => { img.style.display = 'block'; document.getElementById('ui-avatar-placeholder').style.display = 'none'; };
-                img.onerror = () => { img.style.display = 'none'; document.getElementById('ui-avatar-placeholder').style.display = 'flex'; };
             }
             document.getElementById('ui-name').innerText = data.profile.name || "";
             document.getElementById('ui-role').innerText = data.profile.role || "";
@@ -269,152 +248,114 @@
             document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
             if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
 
-            // 2. Render Skills
             const skillsContainer = document.getElementById('ui-skills-container');
             let skillsHTML = '';
             data.skills.forEach(item => {
-                skillsHTML += `
-                    <div class="mb-4"><div class="flex justify-between mb-1"><span class="text-sm font-medium text-slate-300">${item.skill}</span><span class="text-sm font-medium text-brand-primary">${item.proficiency}%</span></div><div class="w-full bg-slate-700 rounded-full h-2.5"><div class="bg-brand-primary h-2.5 rounded-full transition-all duration-1000 ease-out" style="width: 0%" data-target-width="${item.proficiency}%"></div></div></div>`;
+                skillsHTML += `<div class="mb-4"><div class="flex justify-between mb-1"><span class="text-sm font-medium text-slate-300">${item.skill}</span><span class="text-sm font-medium text-brand-primary">${item.proficiency}%</span></div><div class="w-full bg-slate-700 rounded-full h-2.5"><div class="bg-brand-primary h-2.5 rounded-full transition-all duration-1000 ease-out" style="width: 0%" data-target-width="${item.proficiency}%"></div></div></div>`;
             });
             skillsContainer.innerHTML = skillsHTML;
             setTimeout(() => { document.querySelectorAll('[data-target-width]').forEach(el => el.style.width = el.getAttribute('data-target-width')); }, 300);
 
-            // 3. Render Experience
             const expContainer = document.getElementById('ui-experience-container');
             let expHTML = '<div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-slate-700"></div>';
-            if(data.experience.length > 0) {
-                data.experience.forEach((item, index) => {
-                    const isLeft = index % 2 === 0;
-                    const layoutClass = isLeft ? 'md:w-1/2 md:pr-12 md:ml-0' : 'md:w-1/2 md:pl-12 md:ml-auto';
-                    const dotClass = isLeft ? 'md-timeline-dot-left' : 'md-timeline-dot-right';
-                    const alignClass = isLeft ? 'md:text-right text-left' : 'text-left';
-                    const yearText = item.endYear ? `${item.startYear} - ${item.endYear}` : `${item.startYear} - SEKARANG`;
-                    expHTML += `
-                        <div class="mb-12 relative ${layoutClass} pl-8 md:pl-0"><div class="timeline-dot md:absolute md:top-2 ${dotClass}"></div><div class="bg-brand-card p-6 rounded-2xl border border-slate-700 card-hover ${alignClass}"><span class="text-brand-accent text-sm font-bold tracking-wider uppercase">${yearText}</span><h3 class="text-xl font-bold text-white mt-2">${item.role}</h3><p class="text-slate-400 text-sm font-semibold mb-3">${item.company}</p><div class="text-slate-400 text-sm leading-relaxed mt-2">${item.desc}</div></div></div>`;
-                });
-            }
+            data.experience.forEach((item, index) => {
+                const isLeft = index % 2 === 0;
+                const layoutClass = isLeft ? 'md:w-1/2 md:pr-12 md:ml-0' : 'md:w-1/2 md:pl-12 md:ml-auto';
+                const dotClass = isLeft ? 'md-timeline-dot-left' : 'md-timeline-dot-right';
+                const alignClass = isLeft ? 'md:text-right text-left' : 'text-left';
+                const yearText = item.endYear ? `${item.startYear} - ${item.endYear}` : `${item.startYear} - SEKARANG`;
+                expHTML += `<div class="mb-12 relative ${layoutClass} pl-8 md:pl-0"><div class="timeline-dot md:absolute md:top-2 ${dotClass}"></div><div class="bg-brand-card p-6 rounded-2xl border border-slate-700 card-hover ${alignClass}"><span class="text-brand-accent text-sm font-bold tracking-wider uppercase">${yearText}</span><h3 class="text-xl font-bold text-white mt-2">${item.role}</h3><p class="text-slate-400 text-sm font-semibold mb-3">${item.company}</p><div class="text-slate-400 text-sm leading-relaxed mt-2">${item.desc}</div></div></div>`;
+            });
             expContainer.innerHTML = expHTML;
 
-            // 4. WIDZZONE NEW: Render Trainer Documentation (With Premium Carousel & Lightbox)
             const trainerContainer = document.getElementById('ui-trainer-container');
             let trainerHTML = '';
-            
             if(data.trainer.length === 0) {
                 trainerHTML = '<div class="col-span-1 md:col-span-3 text-center py-10 w-full"><i class="fas fa-images text-5xl text-slate-700 mb-4"></i><p class="text-slate-500">Belum ada dokumentasi pelatihan.</p></div>';
             } else {
                 data.trainer.forEach(item => {
-                    // WIDZZONE: Dibungkus dengan swiper-slide
-                    trainerHTML += `
-                        <div class="swiper-slide h-auto"> 
-                            <div class="group relative bg-brand-card rounded-2xl border border-slate-700/50 overflow-hidden card-hover h-full flex flex-col">
-                                
-                                <div class="absolute top-4 left-4 z-20 w-8 h-8 rounded-full bg-brand-dark/80 backdrop-blur-sm border border-brand-primary flex items-center justify-center text-brand-primary text-xs shadow-lg">
-                                    <i class="fas fa-user-chalkboard"></i>
-                                </div>
-
-                                <a href="${item.img}" class="glightbox block relative aspect-video overflow-hidden shrink-0" data-glightbox="title: ${item.title} at ${item.location}; description: ${item.date}">
-                                    <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                </a>
-                                
-                                <div class="p-5 flex-grow flex flex-col justify-between">
-                                    <h3 class="text-sm md:text-base font-bold text-white mb-3 leading-tight group-hover:text-brand-primary transition-colors tracking-tight">
-                                        ${item.title}
-                                    </h3>
-                                    <div class="flex flex-col gap-1.5 text-[11px] text-slate-400 mt-auto">
-                                        <span class="flex items-center gap-2"><i class="fas fa-building text-brand-accent w-3"></i>${item.location}</span>
-                                        <span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-brand-accent w-3"></i>${item.date}</span>
-                                    </div>
-                                </div>
-
-                                <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-primary group-hover:w-full transition-all duration-500 shadow-[0_0_10px_rgba(59,130,246,1)]"></div>
-                            </div>
-                        </div>`;
+                    trainerHTML += `<div class="swiper-slide h-auto"><div class="group relative bg-brand-card rounded-2xl border border-slate-700/50 overflow-hidden card-hover h-full flex flex-col"><div class="absolute top-4 left-4 z-20 w-8 h-8 rounded-full bg-brand-dark/80 backdrop-blur-sm border border-brand-primary flex items-center justify-center text-brand-primary text-xs shadow-lg"><i class="fas fa-user-chalkboard"></i></div><a href="${item.img}" class="glightbox block relative aspect-video overflow-hidden shrink-0" data-glightbox="title: ${item.title} at ${item.location}; description: ${item.date}"><img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div></a><div class="p-5 flex-grow flex flex-col justify-between"><h3 class="text-sm md:text-base font-bold text-white mb-3 leading-tight group-hover:text-brand-primary transition-colors tracking-tight">${item.title}</h3><div class="flex flex-col gap-1.5 text-[11px] text-slate-400 mt-auto"><span class="flex items-center gap-2"><i class="fas fa-building text-brand-accent w-3"></i>${item.location}</span><span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-brand-accent w-3"></i>${item.date}</span></div></div><div class="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-primary group-hover:w-full transition-all duration-500 shadow-[0_0_10px_rgba(59,130,246,1)]"></div></div></div>`;
                 });
             }
             trainerContainer.innerHTML = trainerHTML;
+            new Swiper(".myTrainerSwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".trainer-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".trainer-next", prevEl: ".trainer-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
+            setTimeout(() => { GLightbox({ touchNavigation: true, loop: true, autoplayVideos: true, openEffect: 'zoom', closeEffect: 'fade' }); }, 500);
 
-            // Inisialisasi Engine Swiper Khusus Trainer
-            new Swiper(".myTrainerSwiper", { 
-                slidesPerView: 1, 
-                spaceBetween: 30, 
-                grabCursor: true, 
-                pagination: { el: ".trainer-pagination", clickable: true, dynamicBullets: true }, 
-                navigation: { nextEl: ".trainer-next", prevEl: ".trainer-prev" }, 
-                breakpoints: { 
-                    640: { slidesPerView: 1, spaceBetween: 20 }, 
-                    768: { slidesPerView: 2, spaceBetween: 30 }, 
-                    1024: { slidesPerView: 3, spaceBetween: 30 } 
-                }
-            });
-            
-            // Inisialisasi GLightbox Premium
-            setTimeout(() => {
-                GLightbox({
-                    touchNavigation: true, loop: true, autoplayVideos: true, openEffect: 'zoom', closeEffect: 'fade',
-                    cssEfects: { fade: { in: 'fadeIn', out: 'fadeOut' }, zoom: { in: 'zoomIn', out: 'zoomOut' } }
-                });
-            }, 500);
-
-            // 5. Render Projects
             const projectsContainer = document.getElementById('ui-projects-container');
             let projectsHTML = '';
             data.projects.forEach(item => {
                 let tagsHTML = item.tags.map(tag => `<span class="px-3 py-1 bg-slate-800 text-brand-accent rounded-full text-xs border border-slate-700">${tag}</span>`).join('');
-                projectsHTML += `
-                    <div class="swiper-slide flex">
-                        <a href="${item.link}" target="_blank" class="w-full bg-brand-card rounded-2xl p-8 border border-slate-700 card-hover flex flex-col h-full group relative overflow-hidden text-left">
-                            <div class="absolute top-6 right-6 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:text-brand-primary transition-all duration-300 transform translate-x-2 group-hover:translate-x-0"><i class="fas fa-external-link-alt"></i></div>
-                            <div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary text-2xl mb-6 transition-transform group-hover:scale-110 duration-300"><i class="fas fa-laptop-code"></i></div>
-                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">${item.title}</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">${item.desc}</p>
-                            <div class="flex flex-wrap gap-2 mt-auto relative z-10">${tagsHTML}</div>
-                        </a>
-                    </div>`;
+                projectsHTML += `<div class="swiper-slide flex"><a href="${item.link}" target="_blank" class="w-full bg-brand-card rounded-2xl p-8 border border-slate-700 card-hover flex flex-col h-full group relative overflow-hidden text-left"><div class="absolute top-6 right-6 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:text-brand-primary transition-all duration-300 transform translate-x-2 group-hover:translate-x-0"><i class="fas fa-external-link-alt"></i></div><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary text-2xl mb-6 transition-transform group-hover:scale-110 duration-300"><i class="fas fa-laptop-code"></i></div><h3 class="text-2xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">${item.title}</h3><p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">${item.desc}</p><div class="flex flex-wrap gap-2 mt-auto relative z-10">${tagsHTML}</div></a></div>`;
             });
             projectsContainer.innerHTML = projectsHTML;
-
-            // Inisialisasi Swiper Proyek
             new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".swiper-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
 
-            // Fade Out Premium Loading
             const loader = document.getElementById('loading-screen');
-            loader.style.opacity = '0'; 
-            setTimeout(() => { loader.style.display = 'none'; }, 1000); // 1 detik transisi
+            loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 1000);
         }
 
         // ==========================================
-        // WIDZZONE ENGINE: FORM & UTILS V8
+        // PENGIRIMAN FORM VIA API (FETCH POST)
         // ==========================================
-        function submitForm(event) {
+        async function submitForm(event) {
             event.preventDefault(); 
             const btn = document.getElementById('submit-btn');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Mengirim...';
             btn.disabled = true; btn.classList.add('opacity-70', 'cursor-not-allowed');
 
-            const formData = { name: document.getElementById('form-name').value, email: document.getElementById('form-email').value, message: document.getElementById('form-message').value };
+            const formData = { 
+                name: document.getElementById('form-name').value, 
+                email: document.getElementById('form-email').value, 
+                message: document.getElementById('form-message').value 
+            };
 
-            google.script.run
-                .withSuccessHandler(res => {
-                    if (res === 'Success') { showCustomAlert("Pesan Anda telah berhasil dikirim. Saya akan segera merespons ke email Anda."); document.getElementById('contact-form').reset(); } 
-                    else { alert("Gagal Terkirim: " + res); }
-                    resetButton();
-                })
-                .withFailureHandler(err => { alert("Koneksi Error: " + err.message); resetButton(); })
-                .processContactForm(formData);
-
-            function resetButton() { btn.innerHTML = originalText; btn.disabled = false; btn.classList.remove('opacity-70', 'cursor-not-allowed'); }
+            try {
+                const response = await fetch(WIDZZONE_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // Wajib text/plain agar tidak diblokir CORS Google
+                    body: JSON.stringify(formData)
+                });
+                const result = await response.json();
+                
+                if (result.status === 'Success') { 
+                    showCustomAlert("Pesan Anda telah berhasil dikirim. Saya akan segera merespons ke email Anda."); 
+                    document.getElementById('contact-form').reset(); 
+                } else { 
+                    alert("Gagal Terkirim: " + result.message); 
+                }
+            } catch (error) {
+                alert("Koneksi Error: " + error.message);
+            } finally {
+                btn.innerHTML = originalText; btn.disabled = false; btn.classList.remove('opacity-70', 'cursor-not-allowed');
+            }
         }
 
         function showCustomAlert(msg) { document.getElementById('custom-alert-message').innerText = msg; const overlay = document.getElementById('custom-alert'); const box = document.getElementById('custom-alert-box'); overlay.classList.remove('opacity-0', 'pointer-events-none'); overlay.classList.add('opacity-100'); box.classList.remove('scale-90'); box.classList.add('scale-100'); }
         function closeCustomAlert() { const overlay = document.getElementById('custom-alert'); const box = document.getElementById('custom-alert-box'); overlay.classList.remove('opacity-100'); overlay.classList.add('opacity-0', 'pointer-events-none'); box.classList.remove('scale-100'); box.classList.add('scale-90'); }
 
-        // Pembersih Banner Agresif WIDZZONE
         setInterval(function() { if (document.body.style.top !== '0px') { document.body.style.top = '0px'; } document.querySelectorAll('.goog-te-banner-frame').forEach(function(b) { b.style.display = 'none'; }); }, 500);
 
-        // Load Data awal
-        document.addEventListener('DOMContentLoaded', () => { google.script.run.withSuccessHandler(renderPortfolio).withFailureHandler(error => { alert("Error DB: " + error.message); document.getElementById('loading-screen').style.display = 'none'; }).getPortfolioData(); });
+        // ==========================================
+        // INIT: MEMANGGIL API GOOGLE SHEETS DARI VERCEL
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                if (WIDZZONE_API_URL === "MASUKKAN_URL_WEB_APP_ANDA_DISINI") {
+                    throw new Error("⚠️ WIDZZONE_API_URL belum diisi! Silakan ganti URL di dalam file index.html terlebih dahulu.");
+                }
+                const response = await fetch(WIDZZONE_API_URL);
+                if (!response.ok) throw new Error("Gagal mengambil data dari Google Sheets API.");
+                
+                const data = await response.json();
+                if(data.error) throw new Error(data.error);
+                
+                renderPortfolio(data);
+            } catch (error) {
+                alert("Database Error: " + error.message);
+                document.getElementById('loading-screen').style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
