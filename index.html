@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     
     <script>
-        // Keyframes Animasi Marquee ke Tailwind Config
+        // Tailwind Config - Animasi Marquee (Dipertahankan)
         tailwind.config = { 
             theme: { 
                 extend: { 
                     colors: { brand: { dark: '#0f172a', card: '#1e293b', primary: '#3b82f6', accent: '#0ea5e9' } },
                     animation: {
-                        'marquee-infinite': 'marquee 25s linear infinite',
+                        'marquee-infinite': 'marquee 30s linear infinite', // Diperlambat agar elegan
                     },
                     keyframes: {
                         marquee: {
@@ -62,21 +62,11 @@
         .glightbox-clean .gclose:hover, .glightbox-clean .gnext:hover, .glightbox-clean .gprev:hover { background-color: #3b82f6 !important; }
         .glightbox-clean .gclose:hover path, .glightbox-clean .gnext:hover path, .glightbox-clean .gprev:hover path { fill: white !important; }
 
-        /* Styling Khusus Marquee Item */
+        /* WIDZZONE NEW: Styling Marquee Item (Berbagi class dengan Skills & Logos) */
         .marquee-content { display: flex; width: max-content; }
-        .marquee-item { flex-shrink: 0; width: 160px; height: 60px; display: flex; align-items: center; justify-content: center; margin-right: 64px; }
+        .marquee-item { flex-shrink: 0; width: 140px; height: 50px; display: flex; align-items: center; justify-content: center; margin-right: 64px; }
         .marquee-item img { max-width: 100%; max-height: 100%; filter: grayscale(100%) opacity(50%); transition: all 0.4s ease-in-out; object-fit: contain; }
         .marquee-item:hover img { filter: grayscale(0%) opacity(100%); transform: scale(1.1); }
-
-        /* WIDZZONE NEW: Styling Khusus Kartu Keterampilan Logo */
-        .skill-logo-card img {
-            filter: grayscale(100%) opacity(60%);
-            transition: all 0.4s ease-in-out;
-        }
-        .skill-logo-card:hover img {
-            filter: grayscale(0%) opacity(100%);
-            transform: scale(1.1);
-        }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-300 antialiased selection:bg-brand-primary selection:text-white relative">
@@ -129,18 +119,26 @@
             
             <div class="flex flex-wrap justify-center gap-4 w-full px-4">
                 <a href="#projects" class="px-6 py-3 rounded-full bg-brand-primary text-white font-semibold hover:bg-blue-600 transition-all shadow-[0_0_15px_rgba(59,130,246,0.5)]">Portfolio</a>
-                <a href="https://wa.me/6281234567890?text=Halo%20Mas%20Aditya" target="_blank" class="px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold hover:bg-[#1ebe57] transition-all shadow-[0_0_15px_rgba(37,211,102,0.4)] flex items-center group"><i class="fab fa-whatsapp text-xl mr-2 group-hover:scale-125 transition-transform duration-300"></i>WhatsApp</a>
+                <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya" target="_blank" class="px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold hover:bg-[#1ebe57] transition-all shadow-[0_0_15px_rgba(37,211,102,0.4)] flex items-center group"><i class="fab fa-whatsapp text-xl mr-2 group-hover:scale-125 transition-transform duration-300"></i>WhatsApp</a>
                 <a href="#contact" class="px-6 py-3 rounded-full border border-slate-600 text-white font-semibold hover:border-brand-primary hover:text-brand-primary transition-all">Email Form</a>
                 <a id="ui-cv-btn" href="#" target="_blank" class="px-6 py-3 rounded-full bg-slate-800 border border-brand-accent text-brand-accent font-semibold hover:bg-brand-accent hover:text-white transition-all hidden group"><i class="fas fa-download mr-2 group-hover:-translate-y-1 transition-transform"></i>CV</a>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-slate-900 px-6 border-t border-slate-800 relative">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">Tech <span class="text-brand-primary">Stack</span> & Keahlian</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-5xl mx-auto" id="ui-skills-grid">
+    <section id="skills" class="py-12 bg-slate-800/20 px-6 border-t border-slate-800 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto mb-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-2 text-center">Tech <span class="text-brand-primary">Stack</span></h2>
+            <p class="text-slate-500 font-semibold tracking-[0.2em] text-xs uppercase">Core Technologies & Core Competencies</p>
+        </div>
+        
+        <div class="relative w-full flex overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-brand-dark before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-brand-dark after:to-transparent after:content-['']">
+            
+            <div class="marquee-content animate-marquee-infinite gap-16" id="ui-skills-marquee-1">
                 </div>
+            <div class="marquee-content animate-marquee-infinite gap-16" id="ui-skills-marquee-2">
+                </div>
+            
         </div>
     </section>
 
@@ -161,16 +159,6 @@
             </div>
             <div class="swiper-button-next trainer-next hidden md:flex"></div>
             <div class="swiper-button-prev trainer-prev hidden md:flex"></div>
-        </div>
-    </section>
-
-    <section id="logos" class="py-12 bg-slate-800/20 border-t border-slate-800 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 mb-8 text-center">
-            <p class="text-slate-500 font-semibold tracking-[0.2em] text-xs uppercase">Trusted by & Collaborated with</p>
-        </div>
-        <div class="relative w-full flex overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-brand-dark before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-brand-dark after:to-transparent after:content-['']">
-            <div class="marquee-content animate-marquee-infinite gap-16" id="ui-logos-container-1"></div>
-            <div class="marquee-content animate-marquee-infinite gap-16" id="ui-logos-container-2"></div>
         </div>
     </section>
 
@@ -219,7 +207,7 @@
 
     <div class="fixed bottom-6 right-6 z-[90] flex flex-col items-end animate-fade-in" style="animation: fadeIn 1s ease 1s forwards; opacity: 0;">
         <div class="mb-2 bg-brand-card text-sm text-slate-300 px-4 py-2 rounded-xl border border-slate-700 shadow-lg opacity-0 transition-opacity duration-300 translate-x-4 pointer-events-none" id="wa-tooltip">Mari berdiskusi! <span class="text-brand-primary font-bold">🚀</span></div>
-        <a href="https://wa.me/6281234567890?text=Halo%20Mas%20Aditya" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group" onmouseenter="document.getElementById('wa-tooltip').style.opacity='1'; document.getElementById('wa-tooltip').style.transform='translateX(0)';" onmouseleave="document.getElementById('wa-tooltip').style.opacity='0'; document.getElementById('wa-tooltip').style.transform='translateX(16px)';"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
+        <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group" onmouseenter="document.getElementById('wa-tooltip').style.opacity='1'; document.getElementById('wa-tooltip').style.transform='translateX(0)';" onmouseleave="document.getElementById('wa-tooltip').style.opacity='0'; document.getElementById('wa-tooltip').style.transform='translateX(16px)';"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
     </div>
 
     <div id="custom-alert" class="fixed inset-0 z-[120] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
@@ -237,8 +225,8 @@
     
     <script>
         // ==========================================
-        // 🚨 WIDZZONE API CONNECTION (V10)
-        // Sudah dihubungkan otomatis ke API baru Anda
+        // 🚨 WIDZZONE API CONNECTION (MASTER)
+        // Sudah dihubungkan otomatis ke API Anda
         // ==========================================
         const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxoo0Vvc1s6Vaw20ruM_geToZQpORItrVl_FhH-ZXQsAN36AXw6TCxyZ4GoPhHin9VU/exec"; 
 
@@ -276,7 +264,7 @@
         }
 
         // ==========================================
-        // RENDER DATA ENGINE V10 (WITH LOGO GRID)
+        // RENDER DATA ENGINE V11 (PURE TECH MARQUEE)
         // ==========================================
         function renderPortfolio(data) {
             // 1. Render Profile
@@ -291,34 +279,28 @@
             document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
             if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
 
-            // 2. Render Skills (Grid Logo Premium)
-            const skillsContainer = document.getElementById('ui-skills-grid'); 
+            // 2. WIDZZONE NEW: Render Skills (Modified to Infinite Marquee without percentages)
+            const skillsContainer1 = document.getElementById('ui-skills-marquee-1');
+            const skillsContainer2 = document.getElementById('ui-skills-marquee-2');
             let skillsHTML = '';
             data.skills.forEach(item => {
-                // Hanya render jika URL logo tersedia di Google Sheets
+                // Hanya render jika URL logo tersedia di Google Sheets tab 'Skills' kolom C
                 if (item.logo) {
                     skillsHTML += `
-                        <div class="skill-logo-card group relative bg-brand-card rounded-2xl p-6 border border-slate-700/50 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-2 hover:border-brand-primary/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]">
-                            
-                            <div class="w-20 h-20 flex items-center justify-center mb-5 overflow-hidden shrink-0">
-                                <img src="${item.logo}" alt="${item.skill}" class="w-full h-full object-contain">
-                            </div>
-                            
-                            <p class="text-brand-primary font-bold text-base shadow-[0_0_10px_rgba(59,130,246,0.5)]">${item.proficiency}%</p>
-                            
-                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-dark text-white text-[10px] font-semibold px-3 py-1.5 rounded-lg border border-slate-700 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0 pointer-events-none">
-                                ${item.skill}
-                            </div>
-
+                        <div class="marquee-item group relative" title="${item.skill}">
+                            <img src="${item.logo}" alt="${item.skill}">
                         </div>`;
                 }
             });
             
-            // Jika kosong, tampilkan pesan elegan
-            if(skillsHTML === '') {
-                skillsHTML = '<div class="col-span-full text-center py-8"><p class="text-slate-500">Menunggu konfigurasi logo di Google Sheets...</p></div>';
+            if (skillsHTML !== '') {
+                skillsContainer1.innerHTML = skillsHTML;
+                skillsContainer2.innerHTML = skillsHTML; // Duplicate for seamless scroll
+                document.getElementById('skills').style.display = 'block';
+            } else {
+                // Tampilkan pesan jika data di Sheets belum lengkap
+                skillsContainer1.innerHTML = '<div class="marquee-item"><p class="text-slate-600 text-xs">Waiting for Skill Logos in Google Sheets...</p></div>';
             }
-            skillsContainer.innerHTML = skillsHTML;
 
             // 3. Render Experience
             const expContainer = document.getElementById('ui-experience-container');
@@ -346,21 +328,6 @@
             trainerContainer.innerHTML = trainerHTML;
             new Swiper(".myTrainerSwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".trainer-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".trainer-next", prevEl: ".trainer-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
             setTimeout(() => { GLightbox({ touchNavigation: true, loop: true, autoplayVideos: true, openEffect: 'zoom', closeEffect: 'fade' }); }, 500);
-
-            // 4.5 Render Infinite Logos Marquee
-            const logosContainer1 = document.getElementById('ui-logos-container-1');
-            const logosContainer2 = document.getElementById('ui-logos-container-2');
-            let logosHTML = '';
-            if (data.logos && data.logos.length > 0) {
-                data.logos.forEach(item => {
-                    logosHTML += `<div class="marquee-item" title="${item.name}"><img src="${item.img}" alt="${item.name}"></div>`;
-                });
-                logosContainer1.innerHTML = logosHTML;
-                logosContainer2.innerHTML = logosHTML; // Duplicate
-                document.getElementById('logos').style.display = 'block';
-            } else {
-                document.getElementById('logos').style.display = 'none'; // Sembunyikan jika kosong
-            }
 
             // 5. Render Projects
             const projectsContainer = document.getElementById('ui-projects-container');
