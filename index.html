@@ -47,7 +47,7 @@
         .glightbox-clean .gclose:hover, .glightbox-clean .gnext:hover, .glightbox-clean .gprev:hover { background-color: #3b82f6 !important; }
         .glightbox-clean .gclose:hover path, .glightbox-clean .gnext:hover path, .glightbox-clean .gprev:hover path { fill: white !important; }
 
-        /* WIDZZONE NEW: Premium Glassmorphism Tech Pills (Total Fix) */
+        /* WIDZZONE FIXED: Premium Glassmorphism Tech Pills (Total Marquee Fix V13) */
         .marquee-content { display: flex; width: max-content; }
         .marquee-item { 
             flex-shrink: 0; display: flex; align-items: center; gap: 1rem; 
@@ -75,7 +75,7 @@
         }
         .marquee-item:hover span { color: #ffffff; }
 
-        /* WIDZZONE NEW: Jejak Karier (Total Fix - Zigzag Grid) */
+        /* WIDZZONE FIXED: Jejak Karier (Timeline Zigzag Grid Total Fix) */
         .timeline-container { position: relative; }
         .timeline-card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1.5rem; padding: 2rem; transition: all 0.3s ease; position: relative; }
         .timeline-card:hover { transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); }
@@ -284,7 +284,7 @@
             document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
             if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
 
-            // 2. Render Skills (FIXED Glassmorphism V13)
+            // 2. Render Skills (FIXED Glassmorphism V13 - Total Marquee Fix)
             const skillsContainer1 = document.getElementById('ui-skills-marquee-1');
             const skillsContainer2 = document.getElementById('ui-skills-marquee-2');
             let skillsHTML = '';
