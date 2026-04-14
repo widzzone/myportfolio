@@ -29,7 +29,7 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .glass-nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; }
@@ -129,7 +129,7 @@
             
             <div class="flex flex-wrap justify-center gap-4 w-full px-4">
                 <a href="#projects" class="px-6 py-3 rounded-full bg-brand-primary text-white font-semibold hover:bg-blue-600 transition-all shadow-[0_0_15px_rgba(59,130,246,0.5)]">Portfolio</a>
-                <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya" target="_blank" class="px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold hover:bg-[#1ebe57] transition-all shadow-[0_0_15px_rgba(37,211,102,0.4)] flex items-center group"><i class="fab fa-whatsapp text-xl mr-2 group-hover:scale-125 transition-transform duration-300"></i>WhatsApp</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Mas%20Aditya" target="_blank" class="px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold hover:bg-[#1ebe57] transition-all shadow-[0_0_15px_rgba(37,211,102,0.4)] flex items-center group"><i class="fab fa-whatsapp text-xl mr-2 group-hover:scale-125 transition-transform duration-300"></i>WhatsApp</a>
                 <a href="#contact" class="px-6 py-3 rounded-full border border-slate-600 text-white font-semibold hover:border-brand-primary hover:text-brand-primary transition-all">Email Form</a>
                 <a id="ui-cv-btn" href="#" target="_blank" class="px-6 py-3 rounded-full bg-slate-800 border border-brand-accent text-brand-accent font-semibold hover:bg-brand-accent hover:text-white transition-all hidden group"><i class="fas fa-download mr-2 group-hover:-translate-y-1 transition-transform"></i>CV</a>
             </div>
@@ -219,7 +219,7 @@
 
     <div class="fixed bottom-6 right-6 z-[90] flex flex-col items-end animate-fade-in" style="animation: fadeIn 1s ease 1s forwards; opacity: 0;">
         <div class="mb-2 bg-brand-card text-sm text-slate-300 px-4 py-2 rounded-xl border border-slate-700 shadow-lg opacity-0 transition-opacity duration-300 translate-x-4 pointer-events-none" id="wa-tooltip">Mari berdiskusi! <span class="text-brand-primary font-bold">🚀</span></div>
-        <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group" onmouseenter="document.getElementById('wa-tooltip').style.opacity='1'; document.getElementById('wa-tooltip').style.transform='translateX(0)';" onmouseleave="document.getElementById('wa-tooltip').style.opacity='0'; document.getElementById('wa-tooltip').style.transform='translateX(16px)';"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
+        <a href="https://wa.me/6281234567890?text=Halo%20Mas%20Aditya" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group" onmouseenter="document.getElementById('wa-tooltip').style.opacity='1'; document.getElementById('wa-tooltip').style.transform='translateX(0)';" onmouseleave="document.getElementById('wa-tooltip').style.opacity='0'; document.getElementById('wa-tooltip').style.transform='translateX(16px)';"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
     </div>
 
     <div id="custom-alert" class="fixed inset-0 z-[120] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
@@ -238,7 +238,7 @@
     <script>
         // ==========================================
         // 🚨 WIDZZONE API CONNECTION (V10)
-        // Ganti URL di bawah dengan URL dari Google Apps Script Anda (yang diakhiri /exec)
+        // Sudah dihubungkan otomatis ke API baru Anda
         // ==========================================
         const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxoo0Vvc1s6Vaw20ruM_geToZQpORItrVl_FhH-ZXQsAN36AXw6TCxyZ4GoPhHin9VU/exec"; 
 
@@ -265,7 +265,6 @@
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
                 
-                // Di Vercel (Independent Hosting), kita aman melakukan reload murni
                 setTimeout(() => { window.location.reload(); }, 500);
             } else {
                 btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
@@ -292,16 +291,16 @@
             document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
             if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
 
-            // 2. WIDZZONE NEW: Render Skills (Diubah ke Grid Logo Premium)
+            // 2. Render Skills (Grid Logo Premium)
             const skillsContainer = document.getElementById('ui-skills-grid'); 
             let skillsHTML = '';
             data.skills.forEach(item => {
-                // Hanya render jika URL logo tersedia
+                // Hanya render jika URL logo tersedia di Google Sheets
                 if (item.logo) {
                     skillsHTML += `
                         <div class="skill-logo-card group relative bg-brand-card rounded-2xl p-6 border border-slate-700/50 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-2 hover:border-brand-primary/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]">
                             
-                            <div class="w-20 h-20 flex items-center justify-center mb-5 overflow-hidden shrinking-0">
+                            <div class="w-20 h-20 flex items-center justify-center mb-5 overflow-hidden shrink-0">
                                 <img src="${item.logo}" alt="${item.skill}" class="w-full h-full object-contain">
                             </div>
                             
@@ -314,6 +313,11 @@
                         </div>`;
                 }
             });
+            
+            // Jika kosong, tampilkan pesan elegan
+            if(skillsHTML === '') {
+                skillsHTML = '<div class="col-span-full text-center py-8"><p class="text-slate-500">Menunggu konfigurasi logo di Google Sheets...</p></div>';
+            }
             skillsContainer.innerHTML = skillsHTML;
 
             // 3. Render Experience
@@ -353,6 +357,7 @@
                 });
                 logosContainer1.innerHTML = logosHTML;
                 logosContainer2.innerHTML = logosHTML; // Duplicate
+                document.getElementById('logos').style.display = 'block';
             } else {
                 document.getElementById('logos').style.display = 'none'; // Sembunyikan jika kosong
             }
@@ -418,8 +423,8 @@
         // ==========================================
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                if (WIDZZONE_API_URL === "MASUKKAN_URL_WEB_APP_ANDA_DISINI") {
-                    throw new Error("⚠️ WIDZZONE_API_URL belum diisi! Silakan ganti URL di dalam file index.html terlebih dahulu.");
+                if (!WIDZZONE_API_URL || WIDZZONE_API_URL.includes("MASUKKAN_URL")) {
+                    throw new Error("⚠️ WIDZZONE_API_URL belum diisi! Silakan periksa kode index.html.");
                 }
                 const response = await fetch(WIDZZONE_API_URL);
                 if (!response.ok) throw new Error("Gagal mengambil data dari Google Sheets API.");
