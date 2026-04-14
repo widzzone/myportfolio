@@ -30,6 +30,11 @@
         @keyframes scanline { 0% { transform: translateX(-100%); } 50% { transform: translateX(0); } 100% { transform: translateX(100%); } }
         .animate-scanline { animation: scanline 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
 
+        .swiper-button-next, .swiper-button-prev { color: #3b82f6 !important; background: rgba(15, 23, 42, 0.8); padding: 30px; border-radius: 50%; border: 1px solid #1e293b; transform: scale(0.7); }
+        .swiper-pagination-bullet { background: #64748b !important; opacity: 0.5; }
+        .swiper-pagination-bullet-active { background: #3b82f6 !important; opacity: 1; transform: scale(1.3); }
+        .swiper-slide { height: auto !important; }
+
         #google_translate_element { display: none !important; }
         iframe.goog-te-banner-frame.skiptranslate { display: none !important; visibility: hidden !important; }
         body { top: 0px !important; position: static !important; margin-top: 0px !important; }
@@ -42,7 +47,7 @@
         .glightbox-clean .gclose:hover, .glightbox-clean .gnext:hover, .glightbox-clean .gprev:hover { background-color: #3b82f6 !important; }
         .glightbox-clean .gclose:hover path, .glightbox-clean .gnext:hover path, .glightbox-clean .gprev:hover path { fill: white !important; }
 
-        /* WIDZZONE FIXED V14: Premium Glassmorphism Marquee Anti-Numpuk */
+        /* Tech Stack Marquee */
         .marquee-container-wrapper { display: flex; width: 100%; }
         .marquee-content { display: flex; flex-shrink: 0; align-items: center; gap: 2rem; padding-right: 2rem; }
         .marquee-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1.75rem; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 9999px; backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: default; white-space: nowrap; }
@@ -52,7 +57,7 @@
         .marquee-item span { color: #94a3b8; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.4s ease; }
         .marquee-item:hover span { color: #ffffff; }
 
-        /* WIDZZONE FIXED V16: Jejak Karier Zigzag Grid Total Fix */
+        /* Timeline Experience */
         .timeline-container { position: relative; }
         .timeline-card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1.5rem; padding: 2rem; transition: all 0.3s ease; position: relative; }
         .timeline-card:hover { transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); }
@@ -61,45 +66,6 @@
         .timeline-card p.company { font-size: 0.875rem; color: #94a3b8; font-weight: 600; }
         .timeline-card span.year { font-size: 0.75rem; color: #0ea5e9; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
         .timeline-card .desc ul { list-style: disc; padding-left: 1.25rem; }
-
-        /* WIDZZONE FIXED V18: Premium Glassmorphism Projects Swiper */
-        .project-premium-card {
-            position: relative; overflow: hidden;
-            background: rgba(30, 41, 59, 0.5); /* Kaca transparan gelap */
-            backdrop-filter: blur(15px); /* Efek kabur kaca */
-            border: 1px solid rgba(255, 255, 255, 0.03); /* Bingkai tipis transparan */
-            border-radius: 1.5rem;
-            padding: 3rem;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .project-premium-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: 0 15px 40px -10px rgba(59, 130, 246, 0.3);
-        }
-        .project-premium-card h3 { font-size: 1.75rem; font-weight: 800; color: #ffffff; line-height: 1.2; }
-        
-        /* Premium Project Icon Container (Bersinar Neon) */
-        .card-icon-container {
-            width: 4rem; height: 4rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            border-radius: 0.75rem;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        /* WIDZZONE FIXED V18: Visualisasi Latar Belakang Kartu (Input Visual Geospasial) */
-        .card-visual {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.15; z-index: 0;
-            filter: grayscale(100%) opacity(70%);
-            transition: all 0.5s ease;
-        }
-        .project-premium-card:hover .card-visual {
-            opacity: 0.25; filter: grayscale(0%) opacity(100%);
-        }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-300 antialiased selection:bg-brand-primary selection:text-white relative">
@@ -164,7 +130,6 @@
             <h2 class="text-3xl font-bold text-white mb-2 text-center">Tech <span class="text-brand-primary">Stack</span></h2>
             <p class="text-slate-500 font-semibold tracking-[0.2em] text-[10px] md:text-xs uppercase">Core Technologies & Competencies</p>
         </div>
-        
         <div class="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-20 before:h-full before:w-24 md:before:w-48 before:bg-gradient-to-r before:from-brand-dark before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-20 after:h-full after:w-24 md:after:w-48 after:bg-gradient-to-l after:from-brand-dark after:to-transparent after:content-['']">
             <div class="marquee-container-wrapper py-4">
                 <div class="marquee-content animate-marquee-infinite" id="ui-skills-marquee-1"></div>
@@ -176,7 +141,6 @@
     <section id="experience" class="py-20 px-6 border-t border-slate-800 relative bg-slate-900/50">
         <div class="max-w-6xl mx-auto relative px-4">
             <h2 class="text-3xl font-bold text-white mb-16 text-center">Jejak <span class="text-brand-primary">Karier</span></h2>
-            
             <div class="timeline-container relative">
                 <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-800 z-0"></div>
                 <div class="grid grid-cols-12 gap-x-8 gap-y-16 relative z-10" id="ui-experience-container"></div>
@@ -201,12 +165,11 @@
         <div class="max-w-7xl mx-auto relative px-4 md:px-12">
             <h2 class="text-4xl font-extrabold text-white mb-16 text-center">Proyek <span class="text-brand-primary">Unggulan</span></h2>
             
-            <div class="swiper mySwiper pb-16">
+            <div class="swiper mySwiper pb-20 px-2 pt-4">
                 <div class="swiper-wrapper" id="ui-projects-container"></div>
                 
                 <div class="swiper-button-next hidden md:flex text-brand-primary"></div>
                 <div class="swiper-button-prev hidden md:flex text-brand-primary"></div>
-                
                 <div class="swiper-pagination mb-2 swiper-pagination-dynamic text-brand-primary"></div>
             </div>
         </div>
@@ -245,6 +208,8 @@
 
     <div class="fixed bottom-6 right-6 z-[90] flex flex-col items-end animate-fade-in" style="animation: fadeIn 1s ease 1s forwards; opacity: 0;">
         <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya%2C%20saya%20melihat%20portofolio%20Anda%20yang%20luar%20biasa.%20Kami%20tertarik%20untuk%20mengajak%20Anda%20bergabung%20(peluang%20kerja)%20atau%20mendiskusikan%20potensi%20kolaborasi%20proyek%20terkait%20Data%20Analytics%20%26%20Otomatisasi.%20Kapan%20Anda%20memiliki%20waktu%20luang%20untuk%20berdiskusi%3F" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
+    </div>
+
     <div id="custom-alert" class="fixed inset-0 z-[120] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div id="custom-alert-box" class="bg-brand-card border border-brand-primary p-8 rounded-3xl shadow-[0_0_40px_rgba(59,130,246,0.3)] max-w-sm w-full mx-4 text-center transform scale-90 transition-transform duration-300">
             <div class="w-20 h-20 bg-brand-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-4xl shadow-inner"><i class="fas fa-check-circle animate-pulse"></i></div>
@@ -262,7 +227,6 @@
         // API CONNECTION 
         const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxoo0Vvc1s6Vaw20ruM_geToZQpORItrVl_FhH-ZXQsAN36AXw6TCxyZ4GoPhHin9VU/exec"; 
 
-        // TRANSLATE ENGINE (V16 Fixed)
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'id', includedLanguages: 'en', autoDisplay: false }, 'google_translate_element');
         }
@@ -301,7 +265,6 @@
             }
         }
 
-        // RENDER DATA ENGINE V18 (TOTAL FIXED PROJECTS)
         function renderPortfolio(data) {
             // Profile
             if (data.profile.avatar) {
@@ -315,7 +278,7 @@
             document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
             if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
 
-            // Skills Marquee (V14 Fixed)
+            // Skills Marquee
             const skillsContainer1 = document.getElementById('ui-skills-marquee-1');
             const skillsContainer2 = document.getElementById('ui-skills-marquee-2');
             let skillsHTML = '';
@@ -331,7 +294,7 @@
                 skillsContainer1.innerHTML = '<div class="marquee-item"><p class="text-slate-600 text-xs">Waiting for Skills in Google Sheets...</p></div>';
             }
 
-            // Experience (V16 Fixed Grid)
+            // Experience
             const expContainer = document.getElementById('ui-experience-container');
             let expHTML = '';
             if(data.experience && data.experience.length > 0) {
@@ -368,51 +331,55 @@
             }
             setTimeout(() => { GLightbox({ touchNavigation: true, loop: true, autoplayVideos: true, openEffect: 'zoom', closeEffect: 'fade' }); }, 500);
 
-            // WIDZZONE FIXED V18: Render Premium Projects Swiper (Glassmorphism, Visual Bg, Neon Glow)
+            // ==========================================
+            // WIDZZONE V19: RENDER ULTRA-MODERN PROJECTS
+            // ==========================================
             const projectsContainer = document.getElementById('ui-projects-container');
             let projectsHTML = '';
+            
             if(data.projects && data.projects.length > 0) {
                 data.projects.forEach(item => {
-                    let tagsHTML = item.tags.map(tag => `<span class="px-4 py-1.5 bg-brand-card/30 backdrop-blur-sm text-brand-accent rounded-full text-xs font-semibold border border-brand-accent/20 transition-all group-hover:bg-brand-accent group-hover:text-white group-hover:border-brand-accent">${tag}</span>`).join('');
+                    // Tag bergaya Pill modern
+                    let tagsHTML = item.tags.map(tag => `<span class="px-3 py-1 bg-brand-primary/10 text-brand-primary rounded-lg text-[11px] font-bold tracking-wide border border-brand-primary/20">${tag}</span>`).join('');
                     
                     projectsHTML += `
-                        <div class="swiper-slide flex">
-                            <a href="${item.link}" target="_blank" class="w-full project-premium-card flex flex-col h-full group relative overflow-hidden text-left">
-                                <div class="card-visual" style="background-image: url('image_488481.jpg'); background-size: cover; background-position: center;"></div>
-                                
-                                <div class="relative z-10 flex flex-col h-full">
-                                    
-                                    <div class="absolute top-6 right-6 z-10 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:text-brand-accent transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                                        <i class="fas fa-external-link-alt text-lg"></i>
-                                    </div>
+                    <div class="swiper-slide h-auto">
+                        <a href="${item.link}" target="_blank" class="block h-full w-full bg-[#0f172a] border border-slate-700/50 rounded-[2rem] p-8 relative overflow-hidden group hover:border-brand-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] flex flex-col">
+                            
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                                    <div class="card-icon-container group-hover:scale-105 duration-300">
-                                        <i class="fas fa-chart-area text-brand-primary text-2xl drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]"></i>
-                                    </div>
-                                    
-                                    <h3 class="text-3xl font-extrabold gradient-text mb-4 group-hover:scale-[1.01] transition-all">${item.title}</h3>
-                                    <p class="text-white text-base leading-relaxed mb-10 flex-grow font-normal">${item.desc}</p>
-                                    
-                                    <div class="flex flex-wrap gap-2.5 mt-auto z-10">
-                                        ${tagsHTML}
-                                    </div>
+                            <div class="flex justify-between items-start mb-8">
+                                <div class="w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center group-hover:bg-brand-primary/10 group-hover:border-brand-primary/30 transition-all duration-300">
+                                    <i class="fas fa-layer-group text-2xl text-slate-400 group-hover:text-brand-primary transition-colors"></i>
                                 </div>
-                            </a>
-                        </div>`;
+                                <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 opacity-0 group-hover:opacity-100 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                                    <i class="fas fa-arrow-right -rotate-45 text-sm"></i>
+                                </div>
+                            </div>
+
+                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors duration-300 leading-tight tracking-tight">${item.title}</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">${item.desc}</p>
+
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                ${tagsHTML}
+                            </div>
+                        </a>
+                    </div>`;
                 });
                 projectsContainer.innerHTML = projectsHTML;
                 
-                // WIDZZONE FIXED V18: Premium Swiper Configuration (Speed, Loop, effect standard)
+                // Konfigurasi Swiper agar lebih renggang dan mewah
                 new Swiper(".mySwiper", { 
                     slidesPerView: 1, 
-                    spaceBetween: 40, 
+                    spaceBetween: 30, 
                     grabCursor: true, 
-                    speed: 800, // Kecepatan bergeser yang mewah
-                    loop: true, // Berputar terus menerus
-                    parallax: false, // Kartu premium sudah parallax di-hover
+                    loop: true,
                     pagination: { el: ".swiper-pagination", clickable: true, dynamicBullets: true }, 
                     navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, 
-                    breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 2, spaceBetween: 40 } }
+                    breakpoints: { 
+                        768: { slidesPerView: 2, spaceBetween: 30 }, 
+                        1024: { slidesPerView: 2, spaceBetween: 40 } // Dibatasi 2 slide di desktop agar tidak terlalu padat
+                    }
                 });
             } else {
                 projectsContainer.innerHTML = '<div class="col-span-full text-center py-10"><p class="text-slate-600">Proyek belum tersedia.</p></div>';
@@ -444,7 +411,6 @@
         setInterval(function() { if (document.body.style.top !== '0px') { document.body.style.top = '0px'; } document.querySelectorAll('.goog-te-banner-frame').forEach(function(b) { b.style.display = 'none'; }); }, 500);
 
         document.addEventListener('DOMContentLoaded', async () => {
-            // Set UI Translator (V16 Fixed)
             const isTranslated = document.cookie.split(';').some(item => item.trim().indexOf('googtrans=') == 0);
             if(isTranslated) {
                 document.getElementById('btn-lang-en').className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
