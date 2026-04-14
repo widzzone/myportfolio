@@ -10,10 +10,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     
     <script>
-        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0f172a', card: '#1e293b', primary: '#3b82f6', accent: '#0ea5e9' } } } } }
+        // Keyframes Animasi Marquee ke Tailwind Config
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { brand: { dark: '#0f172a', card: '#1e293b', primary: '#3b82f6', accent: '#0ea5e9' } },
+                    animation: {
+                        'marquee-infinite': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                } 
+            } 
+        }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;600;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .glass-nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; }
@@ -45,6 +61,22 @@
         .glightbox-clean .gclose path, .glightbox-clean .gnext path, .glightbox-clean .gprev path { fill: #3b82f6 !important; }
         .glightbox-clean .gclose:hover, .glightbox-clean .gnext:hover, .glightbox-clean .gprev:hover { background-color: #3b82f6 !important; }
         .glightbox-clean .gclose:hover path, .glightbox-clean .gnext:hover path, .glightbox-clean .gprev:hover path { fill: white !important; }
+
+        /* Styling Khusus Marquee Item */
+        .marquee-content { display: flex; width: max-content; }
+        .marquee-item { flex-shrink: 0; width: 160px; height: 60px; display: flex; align-items: center; justify-content: center; margin-right: 64px; }
+        .marquee-item img { max-width: 100%; max-height: 100%; filter: grayscale(100%) opacity(50%); transition: all 0.4s ease-in-out; object-fit: contain; }
+        .marquee-item:hover img { filter: grayscale(0%) opacity(100%); transform: scale(1.1); }
+
+        /* WIDZZONE NEW: Styling Khusus Kartu Keterampilan Logo */
+        .skill-logo-card img {
+            filter: grayscale(100%) opacity(60%);
+            transition: all 0.4s ease-in-out;
+        }
+        .skill-logo-card:hover img {
+            filter: grayscale(0%) opacity(100%);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-300 antialiased selection:bg-brand-primary selection:text-white relative">
@@ -97,17 +129,18 @@
             
             <div class="flex flex-wrap justify-center gap-4 w-full px-4">
                 <a href="#projects" class="px-6 py-3 rounded-full bg-brand-primary text-white font-semibold hover:bg-blue-600 transition-all shadow-[0_0_15px_rgba(59,130,246,0.5)]">Portfolio</a>
-                <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya%2C%20saya%20melihat%20portofolio%20Anda%20yang%20luar%20biasa.%20Saya%20tertarik%20untuk%20mendiskusikan%20potensi%20kolaborasi%20terkait%20optimasi%20sistem%2Fotomatisasi%20di%20perusahaan%20kami.%20Kapan%20Anda%20memiliki%20waktu%20luang%20untuk%20berdiskusi%20ringan%3F" target="_blank" class="px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold hover:bg-[#1ebe57] transition-all shadow-[0_0_15px_rgba(37,211,102,0.4)] flex items-center group"><i class="fab fa-whatsapp text-xl mr-2 group-hover:scale-125 transition-transform duration-300"></i>WhatsApp</a>
+                <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya" target="_blank" class="px-6 py-3 rounded-full bg-[#25D366] text-white font-semibold hover:bg-[#1ebe57] transition-all shadow-[0_0_15px_rgba(37,211,102,0.4)] flex items-center group"><i class="fab fa-whatsapp text-xl mr-2 group-hover:scale-125 transition-transform duration-300"></i>WhatsApp</a>
                 <a href="#contact" class="px-6 py-3 rounded-full border border-slate-600 text-white font-semibold hover:border-brand-primary hover:text-brand-primary transition-all">Email Form</a>
                 <a id="ui-cv-btn" href="#" target="_blank" class="px-6 py-3 rounded-full bg-slate-800 border border-brand-accent text-brand-accent font-semibold hover:bg-brand-accent hover:text-white transition-all hidden group"><i class="fas fa-download mr-2 group-hover:-translate-y-1 transition-transform"></i>CV</a>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-20 bg-slate-900 px-6 border-t border-slate-800">
+    <section id="skills" class="py-20 bg-slate-900 px-6 border-t border-slate-800 relative">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-bold text-white mb-12 text-center">Tech <span class="text-brand-primary">Stack</span> & Keahlian</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" id="ui-skills-container"></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-5xl mx-auto" id="ui-skills-grid">
+                </div>
         </div>
     </section>
 
@@ -121,13 +154,23 @@
     <section id="trainer" class="py-20 bg-slate-900/50 px-6 border-t border-slate-800 relative">
         <div class="max-w-7xl mx-auto relative px-4 md:px-12">
             <h2 class="text-3xl font-bold text-white mb-6 text-center">Knowledge <span class="text-brand-primary">Sharing</span></h2>
-            <p class="text-slate-400 text-sm md:text-base mb-12 text-center max-w-2xl mx-auto leading-relaxed">Rekam jejak dedikasi saya dalam membagikan wawasan teknis dan analitis sebagai Trainer maupun Pembicara Utama dalam berbagai seminar dan workshop.</p>
+            <p class="text-slate-400 text-sm md:text-base mb-12 text-center max-w-2xl mx-auto leading-relaxed">Rekam jejak dedikasi saya dalam membagikan wawasan teknis dan analitis sebagai Trainer maupun Pembicara Utama.</p>
             <div class="swiper myTrainerSwiper pb-16">
                 <div class="swiper-wrapper" id="ui-trainer-container"></div>
                 <div class="swiper-pagination trainer-pagination mb-2"></div>
             </div>
             <div class="swiper-button-next trainer-next hidden md:flex"></div>
             <div class="swiper-button-prev trainer-prev hidden md:flex"></div>
+        </div>
+    </section>
+
+    <section id="logos" class="py-12 bg-slate-800/20 border-t border-slate-800 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 mb-8 text-center">
+            <p class="text-slate-500 font-semibold tracking-[0.2em] text-xs uppercase">Trusted by & Collaborated with</p>
+        </div>
+        <div class="relative w-full flex overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-brand-dark before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-brand-dark after:to-transparent after:content-['']">
+            <div class="marquee-content animate-marquee-infinite gap-16" id="ui-logos-container-1"></div>
+            <div class="marquee-content animate-marquee-infinite gap-16" id="ui-logos-container-2"></div>
         </div>
     </section>
 
@@ -147,7 +190,7 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center">
             <div class="md:w-1/2 text-center md:text-left">
                 <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Mari Bangun Sesuatu yang <span class="text-brand-primary">Luar Biasa.</span></h2>
-                <p class="text-slate-400 text-lg mb-8">Apakah Anda memiliki proyek baru, peluang karir, atau sekadar ingin berkolaborasi? Tinggalkan pesan, saya akan segera merespons.</p>
+                <p class="text-slate-400 text-lg mb-8">Apakah Anda memiliki proyek baru, peluang karir, atau sekadar ingin berkolaborasi? Tinggalkan pesan.</p>
                 <div class="flex items-center justify-center md:justify-start gap-4 text-slate-300">
                     <i class="fas fa-envelope text-brand-primary text-2xl"></i><span id="ui-email-text" class="font-semibold"></span>
                 </div>
@@ -194,10 +237,10 @@
     
     <script>
         // ==========================================
-        // 🚨 WIDZZONE: KONEKSI API KE GOOGLE SHEETS
+        // 🚨 WIDZZONE API CONNECTION (V10)
         // Ganti URL di bawah dengan URL dari Google Apps Script Anda (yang diakhiri /exec)
         // ==========================================
-        const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxRfJE8fmyxmruxYNv_ELzRbgQgBt1f6kjnhuxr__GZMnYUVEu15lJHRrLLusbFKoJg/exec"; 
+        const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxoo0Vvc1s6Vaw20ruM_geToZQpORItrVl_FhH-ZXQsAN36AXw6TCxyZ4GoPhHin9VU/exec"; 
 
         // ==========================================
         // TRANSLATE ENGINE (VERCEL SAFE)
@@ -234,9 +277,10 @@
         }
 
         // ==========================================
-        // RENDER DATA ENGINE
+        // RENDER DATA ENGINE V10 (WITH LOGO GRID)
         // ==========================================
         function renderPortfolio(data) {
+            // 1. Render Profile
             if (data.profile.avatar) {
                 const img = document.getElementById('ui-avatar');
                 img.src = data.profile.avatar;
@@ -248,14 +292,31 @@
             document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
             if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
 
-            const skillsContainer = document.getElementById('ui-skills-container');
+            // 2. WIDZZONE NEW: Render Skills (Diubah ke Grid Logo Premium)
+            const skillsContainer = document.getElementById('ui-skills-grid'); 
             let skillsHTML = '';
             data.skills.forEach(item => {
-                skillsHTML += `<div class="mb-4"><div class="flex justify-between mb-1"><span class="text-sm font-medium text-slate-300">${item.skill}</span><span class="text-sm font-medium text-brand-primary">${item.proficiency}%</span></div><div class="w-full bg-slate-700 rounded-full h-2.5"><div class="bg-brand-primary h-2.5 rounded-full transition-all duration-1000 ease-out" style="width: 0%" data-target-width="${item.proficiency}%"></div></div></div>`;
+                // Hanya render jika URL logo tersedia
+                if (item.logo) {
+                    skillsHTML += `
+                        <div class="skill-logo-card group relative bg-brand-card rounded-2xl p-6 border border-slate-700/50 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-2 hover:border-brand-primary/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                            
+                            <div class="w-20 h-20 flex items-center justify-center mb-5 overflow-hidden shrinking-0">
+                                <img src="${item.logo}" alt="${item.skill}" class="w-full h-full object-contain">
+                            </div>
+                            
+                            <p class="text-brand-primary font-bold text-base shadow-[0_0_10px_rgba(59,130,246,0.5)]">${item.proficiency}%</p>
+                            
+                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max bg-brand-dark text-white text-[10px] font-semibold px-3 py-1.5 rounded-lg border border-slate-700 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0 pointer-events-none">
+                                ${item.skill}
+                            </div>
+
+                        </div>`;
+                }
             });
             skillsContainer.innerHTML = skillsHTML;
-            setTimeout(() => { document.querySelectorAll('[data-target-width]').forEach(el => el.style.width = el.getAttribute('data-target-width')); }, 300);
 
+            // 3. Render Experience
             const expContainer = document.getElementById('ui-experience-container');
             let expHTML = '<div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-slate-700"></div>';
             data.experience.forEach((item, index) => {
@@ -268,6 +329,7 @@
             });
             expContainer.innerHTML = expHTML;
 
+            // 4. Render Trainer Documentation
             const trainerContainer = document.getElementById('ui-trainer-container');
             let trainerHTML = '';
             if(data.trainer.length === 0) {
@@ -281,6 +343,21 @@
             new Swiper(".myTrainerSwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".trainer-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".trainer-next", prevEl: ".trainer-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
             setTimeout(() => { GLightbox({ touchNavigation: true, loop: true, autoplayVideos: true, openEffect: 'zoom', closeEffect: 'fade' }); }, 500);
 
+            // 4.5 Render Infinite Logos Marquee
+            const logosContainer1 = document.getElementById('ui-logos-container-1');
+            const logosContainer2 = document.getElementById('ui-logos-container-2');
+            let logosHTML = '';
+            if (data.logos && data.logos.length > 0) {
+                data.logos.forEach(item => {
+                    logosHTML += `<div class="marquee-item" title="${item.name}"><img src="${item.img}" alt="${item.name}"></div>`;
+                });
+                logosContainer1.innerHTML = logosHTML;
+                logosContainer2.innerHTML = logosHTML; // Duplicate
+            } else {
+                document.getElementById('logos').style.display = 'none'; // Sembunyikan jika kosong
+            }
+
+            // 5. Render Projects
             const projectsContainer = document.getElementById('ui-projects-container');
             let projectsHTML = '';
             data.projects.forEach(item => {
@@ -313,7 +390,7 @@
             try {
                 const response = await fetch(WIDZZONE_API_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // Wajib text/plain agar tidak diblokir CORS Google
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }, 
                     body: JSON.stringify(formData)
                 });
                 const result = await response.json();
@@ -341,7 +418,7 @@
         // ==========================================
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                if (WIDZZONE_API_URL === "MASUKKAN_URL_WEB_APP_ANDA_DISINI") {
+                if (WIDZZONE_API_URL === "https://script.google.com/macros/s/AKfycbxoo0Vvc1s6Vaw20ruM_geToZQpORItrVl_FhH-ZXQsAN36AXw6TCxyZ4GoPhHin9VU/exec") {
                     throw new Error("⚠️ WIDZZONE_API_URL belum diisi! Silakan ganti URL di dalam file index.html terlebih dahulu.");
                 }
                 const response = await fetch(WIDZZONE_API_URL);
