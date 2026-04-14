@@ -14,7 +14,7 @@
             theme: { 
                 extend: { 
                     colors: { brand: { dark: '#0f172a', card: '#1e293b', primary: '#3b82f6', accent: '#0ea5e9' } },
-                    animation: { 'marquee-infinite': 'marquee 35s linear infinite' }, // Diperlambat agar lebih elegan
+                    animation: { 'marquee-infinite': 'marquee 40s linear infinite' }, // Diperlambat sedikit lagi agar mewah
                     keyframes: { marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-100%)' } } }
                 } 
             } 
@@ -47,35 +47,45 @@
         .glightbox-clean .gclose:hover, .glightbox-clean .gnext:hover, .glightbox-clean .gprev:hover { background-color: #3b82f6 !important; }
         .glightbox-clean .gclose:hover path, .glightbox-clean .gnext:hover path, .glightbox-clean .gprev:hover path { fill: white !important; }
 
-        /* WIDZZONE FIXED: Premium Glassmorphism Tech Pills (Total Marquee Fix V13) */
-        .marquee-content { display: flex; width: max-content; }
+        /* WIDZZONE FIXED V14: Premium Glassmorphism Anti-Numpuk */
+        .marquee-container-wrapper {
+            display: flex;
+            width: 100%;
+        }
+        .marquee-content { 
+            display: flex; 
+            flex-shrink: 0; /* KUNCI ANTI NUMPUK: Memaksa container tidak menyusut */
+            align-items: center;
+            gap: 2rem; /* Jarak konsisten antar kapsul */
+            padding-right: 2rem; /* Margin di ujung agar loop mulus */
+        }
         .marquee-item { 
-            flex-shrink: 0; display: flex; align-items: center; gap: 1rem; 
-            padding: 1rem 2rem; margin-right: 2.5rem; 
-            background: rgba(30, 41, 59, 0.4); 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
-            border-radius: 9999px; backdrop-filter: blur(10px); 
+            display: flex; align-items: center; gap: 1rem; 
+            padding: 0.75rem 1.75rem; 
+            background: rgba(30, 41, 59, 0.6); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 9999px; backdrop-filter: blur(12px); 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: default; 
-            overflow: hidden;
+            white-space: nowrap; /* KUNCI ANTI NUMPUK: Mencegah teks turun baris */
         }
         .marquee-item:hover { 
-            background: rgba(30, 41, 59, 0.9); border-color: rgba(59, 130, 246, 0.4); 
+            background: rgba(30, 41, 59, 0.95); border-color: rgba(59, 130, 246, 0.5); 
             box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5); transform: translateY(-3px); 
         }
         .marquee-item img { 
-            height: 40px; width: 40px; /* Ukuran tetap agar rapi */
-            min-width: 40px; /* Cegah penyusutan */
+            height: 32px; width: 32px; 
+            min-width: 32px; 
             filter: grayscale(100%) brightness(0.8) opacity(70%); 
             transition: all 0.4s ease; object-fit: contain; 
         }
         .marquee-item:hover img { filter: grayscale(0%) brightness(1) opacity(100%); transform: scale(1.1); }
         .marquee-item span { 
-            color: #64748b; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; 
+            color: #94a3b8; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; 
             text-transform: uppercase; transition: color 0.4s ease; 
         }
         .marquee-item:hover span { color: #ffffff; }
 
-        /* WIDZZONE FIXED: Jejak Karier (Timeline Zigzag Grid Total Fix) */
+        /* WIDZZONE FIXED: Jejak Karier Zigzag Grid */
         .timeline-container { position: relative; }
         .timeline-card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1.5rem; padding: 2rem; transition: all 0.3s ease; position: relative; }
         .timeline-card:hover { transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); }
@@ -149,9 +159,11 @@
             <p class="text-slate-500 font-semibold tracking-[0.2em] text-[10px] md:text-xs uppercase">Core Technologies & Competencies</p>
         </div>
         
-        <div class="relative w-full flex overflow-hidden before:absolute before:left-0 before:top-0 before:z-20 before:h-full before:w-24 md:before:w-48 before:bg-gradient-to-r before:from-brand-dark before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-20 after:h-full after:w-24 md:after:w-48 after:bg-gradient-to-l after:from-brand-dark after:to-transparent after:content-['']">
-            <div class="marquee-content animate-marquee-infinite py-4" id="ui-skills-marquee-1"></div>
-            <div class="marquee-content animate-marquee-infinite py-4" id="ui-skills-marquee-2"></div>
+        <div class="relative w-full overflow-hidden before:absolute before:left-0 before:top-0 before:z-20 before:h-full before:w-24 md:before:w-48 before:bg-gradient-to-r before:from-brand-dark before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-20 after:h-full after:w-24 md:after:w-48 after:bg-gradient-to-l after:from-brand-dark after:to-transparent after:content-['']">
+            <div class="marquee-container-wrapper py-4">
+                <div class="marquee-content animate-marquee-infinite" id="ui-skills-marquee-1"></div>
+                <div class="marquee-content animate-marquee-infinite" id="ui-skills-marquee-2"></div>
+            </div>
         </div>
     </section>
 
@@ -242,7 +254,7 @@
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     
     <script>
-        // API CONNECTION (TETAP)
+        // API CONNECTION 
         const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxoo0Vvc1s6Vaw20ruM_geToZQpORItrVl_FhH-ZXQsAN36AXw6TCxyZ4GoPhHin9VU/exec"; 
 
         // TRANSLATE ENGINE
@@ -270,9 +282,9 @@
             }
         }
 
-        // RENDER DATA ENGINE (TOTAL V13 REVISION)
+        // RENDER DATA ENGINE (V14 FIX)
         function renderPortfolio(data) {
-            // 1. Render Profile
+            // Profile
             if (data.profile.avatar) {
                 const img = document.getElementById('ui-avatar');
                 img.src = data.profile.avatar;
@@ -284,7 +296,7 @@
             document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
             if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
 
-            // 2. Render Skills (FIXED Glassmorphism V13 - Total Marquee Fix)
+            // WIDZZONE V14: Render Skills (Anti-Numpuk Pills)
             const skillsContainer1 = document.getElementById('ui-skills-marquee-1');
             const skillsContainer2 = document.getElementById('ui-skills-marquee-2');
             let skillsHTML = '';
@@ -304,13 +316,12 @@
                 skillsContainer1.innerHTML = '<div class="marquee-item"><p class="text-slate-600 text-xs">Waiting for Skills in Google Sheets...</p></div>';
             }
 
-            // 3. Render Experience (TOTAL FIXED Zigzag Grid V13)
+            // Experience
             const expContainer = document.getElementById('ui-experience-container');
             let expHTML = '';
             if(data.experience && data.experience.length > 0) {
                 data.experience.forEach((item, index) => {
                     const isEven = index % 2 === 0;
-                    // Grid Alignment classes: Even cards left-aligned, Odd cards right-aligned
                     const alignmentClass = isEven ? 'col-start-1 col-end-12 md:col-end-7 md:pr-10' : 'col-start-1 md:col-start-7 col-end-12 md:pl-10 text-right';
                     const yearText = item.endYear ? `${item.startYear} - ${item.endYear}` : `${item.startYear} - SEKARANG`;
                     const listAlignment = isEven ? 'md:text-left' : 'md:text-right';
@@ -320,10 +331,8 @@
                         <div class="col-start-6 col-end-8 flex justify-center relative hidden md:flex">
                             <div class="timeline-dot" style="top: 2.5rem;"></div>
                         </div>
-
                         <div class="${alignmentClass} relative">
                             <div class="md:hidden timeline-dot -left-10" style="top: 1.5rem;"></div>
-
                             <div class="timeline-card card-hover">
                                 <span class="year gradient-text">${yearText}</span>
                                 <h3 class="mt-2 mb-1">${item.role}</h3>
@@ -339,7 +348,7 @@
             }
             expContainer.innerHTML = expHTML;
 
-            // 4. Render Trainer Documentation
+            // Trainer
             const trainerContainer = document.getElementById('ui-trainer-container');
             let trainerHTML = '';
             if(data.trainer && data.trainer.length > 0) {
@@ -353,7 +362,7 @@
             }
             setTimeout(() => { GLightbox({ touchNavigation: true, loop: true, autoplayVideos: true, openEffect: 'zoom', closeEffect: 'fade' }); }, 500);
 
-            // 5. Render Projects
+            // Projects
             const projectsContainer = document.getElementById('ui-projects-container');
             let projectsHTML = '';
             if(data.projects && data.projects.length > 0) {
