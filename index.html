@@ -24,12 +24,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .glass-nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; }
         .gradient-text { background: linear-gradient(to right, #38bdf8, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .timeline-dot { position: absolute; left: -29px; top: 0; width: 20px; height: 20px; border-radius: 50%; background: #0f172a; border: 4px solid #3b82f6; box-shadow: 0 0 10px rgba(59,130,246,0.8); }
-        @media (min-width: 768px) { .md-timeline-dot-left { right: -11px; left: auto; } .md-timeline-dot-right { left: -11px; } }
-        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         @keyframes scanline { 0% { transform: translateX(-100%); } 50% { transform: translateX(0); } 100% { transform: translateX(100%); } }
         .animate-scanline { animation: scanline 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
 
@@ -50,31 +47,43 @@
         .glightbox-clean .gclose:hover, .glightbox-clean .gnext:hover, .glightbox-clean .gprev:hover { background-color: #3b82f6 !important; }
         .glightbox-clean .gclose:hover path, .glightbox-clean .gnext:hover path, .glightbox-clean .gprev:hover path { fill: white !important; }
 
-        /* WIDZZONE NEW: Premium Glassmorphism Tech Pills */
+        /* WIDZZONE NEW: Premium Glassmorphism Tech Pills (Total Fix) */
         .marquee-content { display: flex; width: max-content; }
         .marquee-item { 
             flex-shrink: 0; display: flex; align-items: center; gap: 1rem; 
-            padding: 0.75rem 2rem; margin-right: 2rem; 
+            padding: 1rem 2rem; margin-right: 2.5rem; 
             background: rgba(30, 41, 59, 0.4); 
             border: 1px solid rgba(255, 255, 255, 0.05); 
             border-radius: 9999px; backdrop-filter: blur(10px); 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: default; 
+            overflow: hidden;
         }
         .marquee-item:hover { 
             background: rgba(30, 41, 59, 0.9); border-color: rgba(59, 130, 246, 0.4); 
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5); transform: translateY(-3px) scale(1.02); 
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5); transform: translateY(-3px); 
         }
         .marquee-item img { 
-            height: 28px; width: auto; max-width: 80px; 
+            height: 40px; width: 40px; /* Ukuran tetap agar rapi */
+            min-width: 40px; /* Cegah penyusutan */
             filter: grayscale(100%) brightness(0.8) opacity(70%); 
             transition: all 0.4s ease; object-fit: contain; 
         }
         .marquee-item:hover img { filter: grayscale(0%) brightness(1) opacity(100%); transform: scale(1.1); }
         .marquee-item span { 
-            color: #64748b; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; 
+            color: #64748b; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; 
             text-transform: uppercase; transition: color 0.4s ease; 
         }
         .marquee-item:hover span { color: #ffffff; }
+
+        /* WIDZZONE NEW: Jejak Karier (Total Fix - Zigzag Grid) */
+        .timeline-container { position: relative; }
+        .timeline-card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1.5rem; padding: 2rem; transition: all 0.3s ease; position: relative; }
+        .timeline-card:hover { transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); }
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 24px; height: 24px; border-radius: 50%; background: #0f172a; border: 4px solid #3b82f6; box-shadow: 0 0 10px rgba(59,130,246,0.8); z-index: 10; top: 0; }
+        .timeline-card h3 { font-size: 1.25rem; font-weight: 700; color: #ffffff; }
+        .timeline-card p.company { font-size: 0.875rem; color: #94a3b8; font-weight: 600; }
+        .timeline-card span.year { font-size: 0.75rem; color: #0ea5e9; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+        .timeline-card .desc ul { list-style: disc; padding-left: 1.25rem; }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-300 antialiased selection:bg-brand-primary selection:text-white relative">
@@ -135,29 +144,31 @@
     </section>
 
     <section id="skills" class="py-16 bg-slate-900 px-6 border-t border-slate-800 relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-40 bg-brand-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
-
         <div class="max-w-6xl mx-auto mb-12 text-center relative z-10">
             <h2 class="text-3xl font-bold text-white mb-2 text-center">Tech <span class="text-brand-primary">Stack</span></h2>
             <p class="text-slate-500 font-semibold tracking-[0.2em] text-[10px] md:text-xs uppercase">Core Technologies & Competencies</p>
         </div>
         
         <div class="relative w-full flex overflow-hidden before:absolute before:left-0 before:top-0 before:z-20 before:h-full before:w-24 md:before:w-48 before:bg-gradient-to-r before:from-brand-dark before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-20 after:h-full after:w-24 md:after:w-48 after:bg-gradient-to-l after:from-brand-dark after:to-transparent after:content-['']">
-            
-            <div class="marquee-content animate-marquee-infinite gap-16 py-4" id="ui-skills-marquee-1"></div>
-            <div class="marquee-content animate-marquee-infinite gap-16 py-4" id="ui-skills-marquee-2"></div>
-            
+            <div class="marquee-content animate-marquee-infinite py-4" id="ui-skills-marquee-1"></div>
+            <div class="marquee-content animate-marquee-infinite py-4" id="ui-skills-marquee-2"></div>
         </div>
     </section>
 
-    <section id="experience" class="py-20 px-6 border-t border-slate-800">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-white mb-12 text-center">Jejak <span class="text-brand-primary">Karier</span></h2>
-            <div class="relative border-l-2 border-slate-700 ml-4 md:ml-0 md:border-l-0" id="ui-experience-container"></div>
+    <section id="experience" class="py-20 px-6 border-t border-slate-800 relative bg-slate-900/50">
+        <div class="max-w-6xl mx-auto relative px-4">
+            <h2 class="text-3xl font-bold text-white mb-16 text-center">Jejak <span class="text-brand-primary">Karier</span></h2>
+            
+            <div class="timeline-container relative">
+                <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-800 z-0"></div>
+                
+                <div class="grid grid-cols-12 gap-x-8 gap-y-16 relative z-10" id="ui-experience-container">
+                    </div>
+            </div>
         </div>
     </section>
 
-    <section id="trainer" class="py-20 bg-slate-900/50 px-6 border-t border-slate-800 relative">
+    <section id="trainer" class="py-20 bg-slate-900 px-6 border-t border-slate-800 relative">
         <div class="max-w-7xl mx-auto relative px-4 md:px-12">
             <h2 class="text-3xl font-bold text-white mb-6 text-center">Knowledge <span class="text-brand-primary">Sharing</span></h2>
             <p class="text-slate-400 text-sm md:text-base mb-12 text-center max-w-2xl mx-auto leading-relaxed">Rekam jejak dedikasi saya dalam membagikan wawasan teknis dan analitis sebagai Trainer maupun Pembicara Utama.</p>
@@ -170,7 +181,7 @@
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-slate-900 px-6 border-t border-slate-800 relative">
+    <section id="projects" class="py-20 bg-slate-900/50 px-6 border-t border-slate-800 relative">
         <div class="max-w-7xl mx-auto relative px-4 md:px-12">
             <h2 class="text-3xl font-bold text-white mb-12 text-center">Proyek <span class="text-brand-primary">Unggulan</span></h2>
             <div class="swiper mySwiper pb-16">
@@ -214,8 +225,7 @@
     </section>
 
     <div class="fixed bottom-6 right-6 z-[90] flex flex-col items-end animate-fade-in" style="animation: fadeIn 1s ease 1s forwards; opacity: 0;">
-        <div class="mb-2 bg-brand-card text-sm text-slate-300 px-4 py-2 rounded-xl border border-slate-700 shadow-lg opacity-0 transition-opacity duration-300 translate-x-4 pointer-events-none" id="wa-tooltip">Mari berdiskusi! <span class="text-brand-primary font-bold">🚀</span></div>
-        <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group" onmouseenter="document.getElementById('wa-tooltip').style.opacity='1'; document.getElementById('wa-tooltip').style.transform='translateX(0)';" onmouseleave="document.getElementById('wa-tooltip').style.opacity='0'; document.getElementById('wa-tooltip').style.transform='translateX(16px)';"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
+        <a href="https://wa.me/6281224170891?text=Halo%20Mas%20Aditya" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:bg-[#1ebe57] hover:scale-110 transition-all duration-300 relative group"><i class="fab fa-whatsapp"></i><span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span></a>
     </div>
 
     <div id="custom-alert" class="fixed inset-0 z-[120] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
@@ -232,7 +242,7 @@
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     
     <script>
-        // API CONNECTION (TETAP SAMA)
+        // API CONNECTION (TETAP)
         const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxoo0Vvc1s6Vaw20ruM_geToZQpORItrVl_FhH-ZXQsAN36AXw6TCxyZ4GoPhHin9VU/exec"; 
 
         // TRANSLATE ENGINE
@@ -246,27 +256,23 @@
             if (langCode === 'id' && btnId.classList.contains('bg-brand-primary')) return;
             if (langCode === 'en' && btnEn.classList.contains('bg-brand-primary')) return;
 
+            const loader = document.getElementById('loading-screen');
+            loader.style.display = 'flex'; setTimeout(() => { loader.style.opacity = '1'; }, 10);
+
             if(langCode === 'id') {
-                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
-                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
-                
-                const loader = document.getElementById('loading-screen');
-                loader.style.display = 'flex'; setTimeout(() => { loader.style.opacity = '1'; }, 10);
-                
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
                 setTimeout(() => { window.location.reload(); }, 500);
             } else {
-                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
-                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
-                
                 var selectField = document.querySelector(".goog-te-combo");
                 if(selectField) { selectField.value = 'en'; selectField.dispatchEvent(new Event('change', { bubbles: true })); }
+                setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 1000); }, 1000);
             }
         }
 
-        // RENDER DATA ENGINE
+        // RENDER DATA ENGINE (TOTAL V13 REVISION)
         function renderPortfolio(data) {
+            // 1. Render Profile
             if (data.profile.avatar) {
                 const img = document.getElementById('ui-avatar');
                 img.src = data.profile.avatar;
@@ -278,61 +284,88 @@
             document.getElementById('ui-email-text').innerText = data.profile.email || "Hubungi via Form";
             if(data.profile.cv_link) { document.getElementById('ui-cv-btn').href = data.profile.cv_link; document.getElementById('ui-cv-btn').style.display = 'inline-flex'; }
 
-            // WIDZZONE NEW: Render Skills with Glassmorphism Pills
+            // 2. Render Skills (FIXED Glassmorphism V13)
             const skillsContainer1 = document.getElementById('ui-skills-marquee-1');
             const skillsContainer2 = document.getElementById('ui-skills-marquee-2');
             let skillsHTML = '';
-            data.skills.forEach(item => {
-                if (item.logo) {
-                    skillsHTML += `
-                        <div class="marquee-item" title="${item.skill}">
-                            <img src="${item.logo}" alt="${item.skill}">
-                            <span>${item.skill}</span>
-                        </div>`;
-                }
-            });
-            
-            if (skillsHTML !== '') {
+            if (data.skills && data.skills.length > 0) {
+                data.skills.forEach(item => {
+                    if (item.logo) {
+                        skillsHTML += `
+                            <div class="marquee-item" title="${item.skill}">
+                                <img src="${item.logo}" alt="${item.skill}">
+                                <span>${item.skill}</span>
+                            </div>`;
+                    }
+                });
                 skillsContainer1.innerHTML = skillsHTML;
                 skillsContainer2.innerHTML = skillsHTML;
-                document.getElementById('skills').style.display = 'block';
             } else {
                 skillsContainer1.innerHTML = '<div class="marquee-item"><p class="text-slate-600 text-xs">Waiting for Skills in Google Sheets...</p></div>';
             }
 
+            // 3. Render Experience (TOTAL FIXED Zigzag Grid V13)
             const expContainer = document.getElementById('ui-experience-container');
-            let expHTML = '<div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-slate-700"></div>';
-            data.experience.forEach((item, index) => {
-                const isLeft = index % 2 === 0;
-                const layoutClass = isLeft ? 'md:w-1/2 md:pr-12 md:ml-0' : 'md:w-1/2 md:pl-12 md:ml-auto';
-                const dotClass = isLeft ? 'md-timeline-dot-left' : 'md-timeline-dot-right';
-                const alignClass = isLeft ? 'md:text-right text-left' : 'text-left';
-                const yearText = item.endYear ? `${item.startYear} - ${item.endYear}` : `${item.startYear} - SEKARANG`;
-                expHTML += `<div class="mb-12 relative ${layoutClass} pl-8 md:pl-0"><div class="timeline-dot md:absolute md:top-2 ${dotClass}"></div><div class="bg-brand-card p-6 rounded-2xl border border-slate-700 card-hover ${alignClass}"><span class="text-brand-accent text-sm font-bold tracking-wider uppercase">${yearText}</span><h3 class="text-xl font-bold text-white mt-2">${item.role}</h3><p class="text-slate-400 text-sm font-semibold mb-3">${item.company}</p><div class="text-slate-400 text-sm leading-relaxed mt-2">${item.desc}</div></div></div>`;
-            });
+            let expHTML = '';
+            if(data.experience && data.experience.length > 0) {
+                data.experience.forEach((item, index) => {
+                    const isEven = index % 2 === 0;
+                    // Grid Alignment classes: Even cards left-aligned, Odd cards right-aligned
+                    const alignmentClass = isEven ? 'col-start-1 col-end-12 md:col-end-7 md:pr-10' : 'col-start-1 md:col-start-7 col-end-12 md:pl-10 text-right';
+                    const yearText = item.endYear ? `${item.startYear} - ${item.endYear}` : `${item.startYear} - SEKARANG`;
+                    const listAlignment = isEven ? 'md:text-left' : 'md:text-right';
+                    const listPadding = isEven ? 'md:pl-5 md:pr-0' : 'md:pr-5 md:pl-0 pl-5 pr-0';
+
+                    expHTML += `
+                        <div class="col-start-6 col-end-8 flex justify-center relative hidden md:flex">
+                            <div class="timeline-dot" style="top: 2.5rem;"></div>
+                        </div>
+
+                        <div class="${alignmentClass} relative">
+                            <div class="md:hidden timeline-dot -left-10" style="top: 1.5rem;"></div>
+
+                            <div class="timeline-card card-hover">
+                                <span class="year gradient-text">${yearText}</span>
+                                <h3 class="mt-2 mb-1">${item.role}</h3>
+                                <p class="company mb-4">${item.company}</p>
+                                <div class="desc text-slate-400 text-sm leading-relaxed ${listAlignment} ${listPadding}">
+                                    ${item.desc}
+                                </div>
+                            </div>
+                        </div>`;
+                });
+            } else {
+                expHTML = '<div class="col-span-12 text-center text-slate-600">Jejak karier belum tersedia.</div>';
+            }
             expContainer.innerHTML = expHTML;
 
+            // 4. Render Trainer Documentation
             const trainerContainer = document.getElementById('ui-trainer-container');
             let trainerHTML = '';
-            if(data.trainer.length === 0) {
-                trainerHTML = '<div class="col-span-1 md:col-span-3 text-center py-10 w-full"><i class="fas fa-images text-5xl text-slate-700 mb-4"></i><p class="text-slate-500">Belum ada dokumentasi pelatihan.</p></div>';
-            } else {
+            if(data.trainer && data.trainer.length > 0) {
                 data.trainer.forEach(item => {
                     trainerHTML += `<div class="swiper-slide h-auto"><div class="group relative bg-brand-card rounded-2xl border border-slate-700/50 overflow-hidden card-hover h-full flex flex-col"><div class="absolute top-4 left-4 z-20 w-8 h-8 rounded-full bg-brand-dark/80 backdrop-blur-sm border border-brand-primary flex items-center justify-center text-brand-primary text-xs shadow-lg"><i class="fas fa-user-chalkboard"></i></div><a href="${item.img}" class="glightbox block relative aspect-video overflow-hidden shrink-0" data-glightbox="title: ${item.title} at ${item.location}; description: ${item.date}"><img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div></a><div class="p-5 flex-grow flex flex-col justify-between"><h3 class="text-sm md:text-base font-bold text-white mb-3 leading-tight group-hover:text-brand-primary transition-colors tracking-tight">${item.title}</h3><div class="flex flex-col gap-1.5 text-[11px] text-slate-400 mt-auto"><span class="flex items-center gap-2"><i class="fas fa-building text-brand-accent w-3"></i>${item.location}</span><span class="flex items-center gap-2"><i class="fas fa-calendar-alt text-brand-accent w-3"></i>${item.date}</span></div></div><div class="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-primary group-hover:w-full transition-all duration-500 shadow-[0_0_10px_rgba(59,130,246,1)]"></div></div></div>`;
                 });
+                trainerContainer.innerHTML = trainerHTML;
+                new Swiper(".myTrainerSwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".trainer-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".trainer-next", prevEl: ".trainer-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
+            } else {
+                trainerContainer.innerHTML = '<div class="col-span-full text-center py-10"><p class="text-slate-600">Dokumentasi pelatihan belum tersedia.</p></div>';
             }
-            trainerContainer.innerHTML = trainerHTML;
-            new Swiper(".myTrainerSwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".trainer-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".trainer-next", prevEl: ".trainer-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
             setTimeout(() => { GLightbox({ touchNavigation: true, loop: true, autoplayVideos: true, openEffect: 'zoom', closeEffect: 'fade' }); }, 500);
 
+            // 5. Render Projects
             const projectsContainer = document.getElementById('ui-projects-container');
             let projectsHTML = '';
-            data.projects.forEach(item => {
-                let tagsHTML = item.tags.map(tag => `<span class="px-3 py-1 bg-slate-800 text-brand-accent rounded-full text-xs border border-slate-700">${tag}</span>`).join('');
-                projectsHTML += `<div class="swiper-slide flex"><a href="${item.link}" target="_blank" class="w-full bg-brand-card rounded-2xl p-8 border border-slate-700 card-hover flex flex-col h-full group relative overflow-hidden text-left"><div class="absolute top-6 right-6 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:text-brand-primary transition-all duration-300 transform translate-x-2 group-hover:translate-x-0"><i class="fas fa-external-link-alt"></i></div><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary text-2xl mb-6 transition-transform group-hover:scale-110 duration-300"><i class="fas fa-laptop-code"></i></div><h3 class="text-2xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">${item.title}</h3><p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">${item.desc}</p><div class="flex flex-wrap gap-2 mt-auto relative z-10">${tagsHTML}</div></a></div>`;
-            });
-            projectsContainer.innerHTML = projectsHTML;
-            new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".swiper-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
+            if(data.projects && data.projects.length > 0) {
+                data.projects.forEach(item => {
+                    let tagsHTML = item.tags.map(tag => `<span class="px-3 py-1 bg-slate-800 text-brand-accent rounded-full text-xs border border-slate-700">${tag}</span>`).join('');
+                    projectsHTML += `<div class="swiper-slide flex"><a href="${item.link}" target="_blank" class="w-full bg-brand-card rounded-2xl p-8 border border-slate-700 card-hover flex flex-col h-full group relative overflow-hidden text-left"><div class="absolute top-6 right-6 text-slate-500 opacity-0 group-hover:opacity-100 group-hover:text-brand-primary transition-all duration-300 transform translate-x-2 group-hover:translate-x-0"><i class="fas fa-external-link-alt"></i></div><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary text-2xl mb-6 transition-transform group-hover:scale-110 duration-300"><i class="fas fa-laptop-code"></i></div><h3 class="text-2xl font-bold text-white mb-4 group-hover:text-brand-primary transition-colors">${item.title}</h3><p class="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">${item.desc}</p><div class="flex flex-wrap gap-2 mt-auto relative z-10">${tagsHTML}</div></a></div>`;
+                });
+                projectsContainer.innerHTML = projectsHTML;
+                new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 30, grabCursor: true, pagination: { el: ".swiper-pagination", clickable: true, dynamicBullets: true }, navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }, breakpoints: { 640: { slidesPerView: 1, spaceBetween: 20 }, 768: { slidesPerView: 2, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 30 } }});
+            } else {
+                projectsContainer.innerHTML = '<div class="col-span-full text-center py-10"><p class="text-slate-600">Proyek belum tersedia.</p></div>';
+            }
 
             const loader = document.getElementById('loading-screen');
             loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 1000);
