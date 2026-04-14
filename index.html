@@ -48,7 +48,7 @@
         .glightbox-clean .gclose:hover, .glightbox-clean .gnext:hover, .glightbox-clean .gprev:hover { background-color: #3b82f6 !important; }
         .glightbox-clean .gclose:hover path, .glightbox-clean .gnext:hover path, .glightbox-clean .gprev:hover path { fill: white !important; }
 
-        /* WIDZZONE FIXED V14: Premium Glassmorphism Anti-Numpuk */
+        /* WIDZZONE FIXED: Premium Glassmorphism Anti-Numpuk */
         .marquee-container-wrapper { display: flex; width: 100%; }
         .marquee-content { display: flex; flex-shrink: 0; align-items: center; gap: 2rem; padding-right: 2rem; }
         .marquee-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1.75rem; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 9999px; backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: default; white-space: nowrap; }
@@ -229,63 +229,48 @@
         const WIDZZONE_API_URL = "https://script.google.com/macros/s/AKfycbxoo0Vvc1s6Vaw20ruM_geToZQpORItrVl_FhH-ZXQsAN36AXw6TCxyZ4GoPhHin9VU/exec"; 
 
         // =========================================================================
-        // WIDZZONE V15 TRANSLATION ENGINE (BRUTAL COOKIE CLEANER)
+        // WIDZZONE V16 TRANSLATION ENGINE (RELIABLE TOGGLE FIX)
         // =========================================================================
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'id', includedLanguages: 'en', autoDisplay: false }, 'google_translate_element');
         }
 
-        // Mengecek bahasa yang aktif saat web pertama kali diload
-        function getCurrentLang() {
-            let cookies = document.cookie.split(';');
-            for(let i = 0; i < cookies.length; i++) {
-                let c = cookies[i].trim();
-                if (c.indexOf('googtrans=') == 0) {
-                    let val = c.substring('googtrans='.length, c.length);
-                    if (val.endsWith('/en')) return 'en';
-                }
-            }
-            return 'id'; // Default
-        }
-
-        // Fungsi memperbarui warna UI tombol
-        function updateLanguageButtonsUI(lang) {
+        function changeLanguage(langCode) {
             const btnId = document.getElementById('btn-lang-id');
             const btnEn = document.getElementById('btn-lang-en');
-            if(lang === 'en') {
-                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
-                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
-            } else {
-                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
-                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
-            }
-        }
 
-        function changeLanguage(langCode) {
-            // Cek jika tombol bahasa yang sedang aktif yang diklik
-            if (langCode === getCurrentLang()) return;
+            // Cek pencegah klik berulang berdasarkan WARNA TOMBOL (Metode yang paling akurat)
+            if (langCode === 'id' && btnId.classList.contains('bg-brand-primary')) return;
+            if (langCode === 'en' && btnEn.classList.contains('bg-brand-primary')) return;
 
             const loader = document.getElementById('loading-screen');
             loader.style.display = 'flex'; setTimeout(() => { loader.style.opacity = '1'; }, 10);
 
             if(langCode === 'id') {
-                // BRUTAL COOKIE WIPE: Hapus semua jejak cookie Google Translate (termasuk .domain)
+                // WIDZZONE V16: BRUTAL COOKIE WIPE
                 const domain = window.location.hostname;
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain};`;
-                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${domain};`; // Kunci masalahnya ada di sini (dot domain)
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${domain};`;
                 
-                // Ubah UI seketika lalu muat ulang murni
-                updateLanguageButtonsUI('id');
+                // Ubah UI
+                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
+                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
+                
+                // RELOAD PAKSA (menggunakan window.location.reload standar agar kembali ke posisi scroll semula)
                 setTimeout(() => { window.location.reload(); }, 500);
             } else {
-                // Pindah ke Bahasa Inggris
+                // TRANSLATE KE EN
                 var selectField = document.querySelector(".goog-te-combo");
                 if(selectField) { 
                     selectField.value = 'en'; 
                     selectField.dispatchEvent(new Event('change', { bubbles: true })); 
                 }
-                updateLanguageButtonsUI('en');
+                
+                // Ubah UI
+                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
+                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
+                
                 setTimeout(() => { loader.style.opacity = '0'; setTimeout(() => { loader.style.display = 'none'; }, 1000); }, 1000);
             }
         }
@@ -399,8 +384,19 @@
         setInterval(function() { if (document.body.style.top !== '0px') { document.body.style.top = '0px'; } document.querySelectorAll('.goog-te-banner-frame').forEach(function(b) { b.style.display = 'none'; }); }, 500);
 
         document.addEventListener('DOMContentLoaded', async () => {
-            // Set UI Translator Pertama Kali
-            updateLanguageButtonsUI(getCurrentLang());
+            // Cek status tombol berdasarkan ada tidaknya cookie Google Translate (untuk UI awal)
+            let isTranslated = false;
+            let cookies = document.cookie.split(';');
+            for(let i = 0; i < cookies.length; i++) {
+                if (cookies[i].trim().indexOf('googtrans=') == 0) { isTranslated = true; break; }
+            }
+            
+            const btnId = document.getElementById('btn-lang-id');
+            const btnEn = document.getElementById('btn-lang-en');
+            if(isTranslated) {
+                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full transition-all bg-brand-primary text-white shadow-md";
+                btnId.className = "px-3 py-1 text-xs font-bold rounded-full transition-all text-slate-400 hover:text-white";
+            }
 
             try {
                 const response = await fetch(WIDZZONE_API_URL);
